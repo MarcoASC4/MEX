@@ -9,6 +9,15 @@
 
   <body>
     <div>
+      {% if user %}
+        <h1>Welcome {{nickname}}</h1>
+        <br>
+        <a href="{{logout_url}}">Sign out</a>
+        {% else %}
+        <a href="{{login_url}}">Sign in</a>
+        {% endif %}
+    </div>
+    <div>
       <img class="slides" src="https://www.incimages.com/uploaded_files/image/970x450/getty_855098134_353411.jpg">
       <img class="slides" src="https://assets3.thrillist.com/v1/image/1864928/size/tmg-article_default_mobile.jpg">
       <img class="slides" src="https://networkposting.com/wp-content/uploads/2018/02/maxresdefault-137.jpg">
@@ -18,16 +27,6 @@
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
     <form method="post">
 
-    <div>
-      {% if user %}
-        <h1>Welcome {{nickname}}</h1>
-        <br>
-        <a href="{{logout_url}}">Sign out</a>
-        {% else %}
-        <h1>Welcome</h1>
-        <a href="{{login_url}}">Sign in</a>
-        {% endif %}
-    </div>
 
   </body>
 </html>
