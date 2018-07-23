@@ -5,13 +5,51 @@
     <title></title>
 
     <link rel="stylesheet" href="/Users/demouser/MEX/static/themes/design.css">
-
+  </head>
+  <header>
+    <nav>
+          <a class="navlinks" href="google.com">Home</a>
+          <a class="navlinks" href="google.com">Profile</a>
+          <a class="navlinks" href="google.com">Feed</a>
+    </nav>
+  </header>
   <body>
     <div>
         <a href="{{logout_url}}">Sign out</a>
     </div>
     <h1>You are now logged in</h1>
-    
+    <form method = "post">
+      <div>
+        <p>Recipe Title:
+        <input type="text" name="recipe_title"/>
+      </div>
+      <div>
+        <p>Recipe Description:
+          <br>
+          <textarea name="recipe_description" rows="4" cols="50"/>
+          </textarea>
+      </div>
+      <div>
+        <p>Enter your ingredients:
+          <br>
+        <textarea name="recipe_ingredients" rows="4" cols="50"/>
+        </textarea>
+      </div>
+      <div>
+        <p>Recipe instructions:
+          <br>
+        <textarea name="recipe_instructions" rows="4" cols="50"/>
+        </textarea>
+      </div>
+      <div>
+        <p>Add a photo of the food that this makes:
+        <input type="image" name="recipe_image"/>
+      </div>
+      <div>
+        <button type="submit">Post!</button>
+      </div>
+    </form>
+
 
 
   </body>
