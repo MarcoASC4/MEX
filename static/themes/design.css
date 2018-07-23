@@ -1,5 +1,8 @@
 h1 {
   background-color: #ffdead;
+  font: 400 100px/1.2 'Merienda One', Helvetica, sans-serif;
+  color: rgba(0,0,0,0.7);
+  text-shadow: 3px 3px 3px #fff;
 }
 
 .slides {
