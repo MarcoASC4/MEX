@@ -1,3 +1,13 @@
 .heady {
   background-color: #ffdead;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Snell Roundhand', cursive;
 }

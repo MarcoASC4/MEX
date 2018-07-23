@@ -9,14 +9,16 @@
   <body>
     <div class='heady'>
       <h1>Welcome to MEX</h1>
-      <h2> The best recipe sharing website</h2>
+      <h2 class='spacer'> The best recipe sharing website</h2>
       <div>
         {% if user %}
           <h1>Welcome {{nickname}}</h1>
           <br>
           <a href="{{logout_url}}">Sign out</a>
           {% else %}
+          <button>
           <a href="{{login_url}}">Sign in</a>
+          </button
           {% endif %}
       </div>
     </div>
