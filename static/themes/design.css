@@ -1,21 +1,12 @@
-<<<<<<< HEAD
-h1 {
-  background-color: #ffdead;
-=======
 .heady {
   background-color: #ff1919;
->>>>>>> b44c327a0de6a30066f0c43ca8666c4ec4ca54f1
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
-<<<<<<< HEAD
-
-=======
 .buttonete {
 
 }
->>>>>>> b44c327a0de6a30066f0c43ca8666c4ec4ca54f1
 
 html, body {
   margin: 0;
