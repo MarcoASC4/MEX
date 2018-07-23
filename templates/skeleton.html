@@ -2,28 +2,24 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>MEX</title>
 
-    <link rel="stylesheet" href="/Users/demouser/MEX/static/themes/design.css">
+    <link rel="stylesheet" href="/static/themes/design.css">
 
   <body>
-    <div>
-      {% if user %}
-        <h1>Welcome {{nickname}}</h1>
-        <br>
-        <a href="{{logout_url}}">Sign out</a>
-        {% else %}
-        <a href="{{login_url}}">Sign in</a>
-        {% endif %}
+    <div class='heady'>
+      <h1>Welcome to MEX</h1>
+      <h2> The best recipe sharing website</h2>
+      <div>
+        {% if user %}
+          <h1>Welcome {{nickname}}</h1>
+          <br>
+          <a href="{{logout_url}}">Sign out</a>
+          {% else %}
+          <a href="{{login_url}}">Sign in</a>
+          {% endif %}
+      </div>
     </div>
-<<<<<<< HEAD
-
-
-    <h1> Welcome to MEX</h1>
-=======
-    <h1>Welcome to MEX</h1>
->>>>>>> 2f46cf6378eea51287926f96b68e5fdb9909a663
-    <h2> The best recipe sharing website</h2>
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
 
