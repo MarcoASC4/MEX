@@ -1,11 +1,11 @@
-. heady {
-  background-color: #ffdead;
+.heady {
+  background-color: #ff1919;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 }
 .buttonete {
-  
+
 }
 
 html, body {
