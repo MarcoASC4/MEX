@@ -10,6 +10,15 @@
   <body>
     <h1> Welcome to MEX</h1>
     <h2> The best recipe sharing website</h2>
+    <div>
+      {% if user %}
+        <h1>Welcome {{nickname}}</h1>
+        <br>
+        <a href="{{logout_url}}">Sign out</a>
+        {% else %}
+        <a href="{{login_url}}">Sign in</a>
+        {% endif %}
+    </div>
 
     <div>
       <img class="slides" src="https://www.incimages.com/uploaded_files/image/970x450/getty_855098134_353411.jpg">
@@ -18,19 +27,8 @@
     </div>
 
 
-    <div>
-      {% if user %}
-        <h1>Welcome {{nickname}}</h1>
-        <br>
-        <a href="{{logout_url}}">Sign out</a>
-        {% else %}
-        <h1>Welcome</h1>
-        <a href="{{login_url}}">Sign in</a>
-        {% endif %}
-    </div>
 
 
-  
 
   </body>
 </html>
