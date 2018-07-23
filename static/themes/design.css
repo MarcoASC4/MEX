@@ -1,5 +1,6 @@
-.heady {
+h1 {
   background-color: #ffdead;
+<<<<<<< HEAD
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -10,4 +11,14 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Snell Roundhand', cursive;
+=======
+
+>>>>>>> 222d18a36ed4d0e14075e7900cf0e8a6ad7ba8a0
 }
+
+/* body {
+  background-image: url("/static/themes/food.jpg");
+  background-position: center;
+  background-attachment: fixed;
+}
+/*
