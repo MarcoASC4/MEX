@@ -11,7 +11,7 @@ jinja_current_directory = jinja2.Environment(
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        template = jinja_current_dir.get_template('my_blog.html')
+        template = jinja_current_directory.get_template('templates/skeleton.html')
         self.response.write(template.render())
 
         user = users.get_current_user()
@@ -23,3 +23,8 @@ class MainHandler(webapp2.RequestHandler):
         else:
             login_url = users.create_login_url('/')
             greeting = '<a href="{}">Sign in</a>'.format(login_url)
+
+
+app = webapp2.WSGIApplication([
+    ('/', MainHandler)
+], debug=True)
