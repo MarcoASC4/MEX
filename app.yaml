@@ -4,8 +4,8 @@ threadsafe: yes
 
 handlers:
 #new handlers should go ABOVE the catch all url (.*)
-- url: /static/themes
-  static_dir: themes
+- url: /static
+  static_dir: satic
 - url: .*
   script: main.app
 

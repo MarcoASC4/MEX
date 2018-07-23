@@ -10,17 +10,19 @@
   <body>
     <h1> Welcome to MEX</h1>
     <h2> The best recipe sharing website</h2>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
     <form method="post">
-      <!-- Input for "tweet" -->
-      <h3> Username:</h3>
-      <input type="text"/>
-      <br>
-      <h3> Password: </h3>
-      <input type='text'/>
 
-      </br>
-      <!-- Submit button -->
-      <button>Log in</button>
-    </form>
+    <div>
+      {% if user %}
+        <h1>Welcome {{nickname}}</h1>
+        <br>
+        <a href="{{logout_url}}">Sign out</a>
+        {% else %}
+        <h1>Welcome</h1>
+        <a href="{{login_url}}">Sign in</a>
+        {% endif %}
+    </div>
+    
   </body>
 </html>
