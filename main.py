@@ -2,6 +2,8 @@ import jinja2
 import os
 import webapp2
 from google.appengine.api import users
+from google.appengine.ext import ndb
+
 
 
 jinja_current_directory = jinja2.Environment(
@@ -18,9 +20,17 @@ class MainHandler(webapp2.RequestHandler):
         logout_url = None
         login_url = None
 
+        added=False
+
         if user:
             nickname = user.nickname()
             logout_url = users.create_logout_url('/')
+
+            '''if added==False:
+                usertest=User(username=str(user), recipe=["cake","bake"])
+                key=usertest.put()
+                print key
+                added=True'''
         else:
             login_url = users.create_login_url('/')
 
@@ -30,6 +40,7 @@ class MainHandler(webapp2.RequestHandler):
             "logout_url": logout_url,
             "login_url": login_url,
         }
+
         template = jinja_current_directory.get_template('templates/skeleton.html')
         self.response.write(template.render(template_vars))
 
@@ -37,3 +48,7 @@ class MainHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
 ], debug=True)
+
+class User(ndb.Model):
+    username=ndb.StringProperty()
+    recipe=ndb.StringProperty(repeated=True)
