@@ -22,7 +22,7 @@ class MainHandler(webapp2.RequestHandler):
             nickname = user.nickname()
             logout_url = users.create_logout_url('/')
         else:
-            login_url = users.create_login_url('/')
+            login_url = users.create_login_url('/myhome')
 
         template_vars = {
             "user": user,
@@ -33,7 +33,16 @@ class MainHandler(webapp2.RequestHandler):
         template = jinja_current_directory.get_template('templates/skeleton.html')
         self.response.write(template.render(template_vars))
 
+class MyHomeHandler(webapp2.RequestHandler):
+    def get(self):
+        logout_url = users.create_logout_url('/')
+        template_vars = {
+            "logout_url": logout_url,
+        }
+        template = jinja_current_directory.get_template('templates/home.html')
+        self.response.write(template.render(template_vars))
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/myhome', MyHomeHandler)
 ], debug=True)
