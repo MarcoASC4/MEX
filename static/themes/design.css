@@ -1,8 +1,11 @@
 h1 {
   background-color: #ffdead;
-  
+
 }
 
-.slides {
-  width: 100%
+/* body {
+  background-image: url("/static/themes/food.jpg");
+  background-position: center;
+  background-attachment: fixed;
 }
+/*
