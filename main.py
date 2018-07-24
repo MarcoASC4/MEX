@@ -78,6 +78,11 @@ class MyHomeHandler(webapp2.RequestHandler):
         template = jinja_current_directory.get_template('templates/myfeed.html')
         self.response.write(template.render())
 
+class AboutUsHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_current_dir.get_template('about_us.html')
+        self.response.write(template.render())
+
 class MyFeedHandler(webapp2.RequestHandler):
     def get(self):
 
@@ -91,6 +96,7 @@ class MyFeedHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
+    ('/aboutus', MyHomeHandler),
     ('/myhome', MyHomeHandler),
     ('/myfeed', MyFeedHandler)
 ], debug=True)
