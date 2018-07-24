@@ -120,9 +120,12 @@ class MyHomeHandler(webapp2.RequestHandler):
 class AboutUsHandler(webapp2.RequestHandler):
     def get(self):
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         logout_url = users.create_logout_url('/')
 =======
+=======
+>>>>>>> 1c949aa08fddcaf4c3ff2bd84c9361bbea71dd7c
         user = users.get_current_user()
 
         #assign these to something so the python runs no matter what
@@ -134,6 +137,9 @@ class AboutUsHandler(webapp2.RequestHandler):
             print nickname
 
 
+<<<<<<< HEAD
+>>>>>>> 1c949aa08fddcaf4c3ff2bd84c9361bbea71dd7c
+=======
 >>>>>>> 1c949aa08fddcaf4c3ff2bd84c9361bbea71dd7c
         template_vars = {
             "user": user,
