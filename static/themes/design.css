@@ -9,6 +9,7 @@
 .container {
   position: relative;
   text-align: center;
+
 }
 
 .loginbox {
@@ -20,6 +21,7 @@
     width: 200px;
     background-color: #ff1919;
     border-radius: 100px;
+    opacity: .5;
 
 }
 
@@ -29,13 +31,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-<<<<<<< HEAD
   border-radius: 22px;
-=======
-button {
-  width: 200px:
-  height: 100px;
->>>>>>> 7f7763db609952d70b114c0d9ccb0eb9508576a5
+  opacity: 1;
 }
 
 
