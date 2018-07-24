@@ -89,7 +89,7 @@ class MyHomeHandler(webapp2.RequestHandler):
 
         template_vars={
             "username":userperson.username,
-            "recipe":userproperty.recipe
+            "recipes":userproperty.recipe
         }
         #count=0
         #print userproperty.recipe.name
