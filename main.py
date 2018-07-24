@@ -69,7 +69,7 @@ class MyHomeHandler(webapp2.RequestHandler):
 
 
         template = jinja_current_directory.get_template('templates/myfeed.html')
-        self.response.write(template.render(template_vars))
+        self.response.write(template.render())
 #********
 
 #********
