@@ -24,15 +24,13 @@ class MainHandler(webapp2.RequestHandler):
         if user:
             nickname = user.nickname()
             logout_url = users.create_logout_url('/')
-            userquery=User.query(User.username==nickname).fetch()
-            print "query::::"
-            print userquery
+            #userquery=User.query(User.username==nickname).fetch()
+            #print "query::::"
+            #print userquery
 
             print("logged in")
-            if len(userquery)==0:
-                usertest=User(username=nickname, recipe=["cake","bake","take"])
-                key=usertest.put()
-                print key
+            #if len(userquery)==0:
+
         else:
             login_url = users.create_login_url('/myhome')
             print ("logged out")
@@ -54,6 +52,15 @@ class MyHomeHandler(webapp2.RequestHandler):
         template_vars = {
             "logout_url": logout_url,
         }
+
+        user = users.get_current_user()
+        if(user):
+            userquery=User.query(User.username==user.nickname()).fetch()
+            if(len(userquery)==0):
+                usertest=User(username=user.nickname(), recipe=["cake","bake","take"])
+                key=usertest.put()
+                print key
+
         template = jinja_current_directory.get_template('templates/home.html')
         self.response.write(template.render(template_vars))
 
@@ -69,7 +76,7 @@ class MyHomeHandler(webapp2.RequestHandler):
 
 
         template = jinja_current_directory.get_template('templates/myfeed.html')
-        self.response.write(template.render(template_vars))
+        self.response.write(template.render())
 #********
 
 #********

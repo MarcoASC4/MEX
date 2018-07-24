@@ -29,7 +29,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
+<<<<<<< HEAD
   border-radius: 22px;
+=======
+button {
+  width: 200px:
+  height: 100px;
+>>>>>>> 7f7763db609952d70b114c0d9ccb0eb9508576a5
 }
 
 
