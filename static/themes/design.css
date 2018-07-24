@@ -4,8 +4,6 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  font-family: 'Shadows Into Light', cursive;
-  font-size: 20px;
 }
 
 .container {
@@ -15,34 +13,34 @@
 
 .loginbox {
   position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     height: 200px;
     width: 200px;
-    background-color: white;
+    background-color: #ff1919;
+    border-radius: 100px;
+
 }
 
+.buttonete {
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
+  border-radius: 22px;
+}
 
 
 .slides {
   margin: 0 auto;
-  width: 1000px;
+  width: 1450px;
   height: 750px;
 }
 
 html, body {
   margin: 0;
   padding: 0;
-=======
-
->>>>>>> edd1f1dfff8dcaee880694834b4bde359c8b0263
-}
-
-/* body {
-  background-image: url("/static/themes/food.jpg");
-  background-position: center;
-  background-attachment: fixed;
-}
-/*
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 20px;
