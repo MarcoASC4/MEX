@@ -114,18 +114,9 @@ class MyHomeHandler(webapp2.RequestHandler):
         self.response.write(template.render(template_vars))
         for x,y in template_vars.items():
             print (x,y)
-
-'''
-<<<<<<< HEAD
+            
 class AboutUsHandler(webapp2.RequestHandler):
     def get(self):
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-        logout_url = users.create_logout_url('/')
-=======
-=======
->>>>>>> 1c949aa08fddcaf4c3ff2bd84c9361bbea71dd7c
         user = users.get_current_user()
 
         #assign these to something so the python runs no matter what
@@ -137,10 +128,6 @@ class AboutUsHandler(webapp2.RequestHandler):
             print nickname
 
 
-<<<<<<< HEAD
->>>>>>> 1c949aa08fddcaf4c3ff2bd84c9361bbea71dd7c
-=======
->>>>>>> 1c949aa08fddcaf4c3ff2bd84c9361bbea71dd7c
         template_vars = {
             "user": user,
             "logout_url": logout_url,
@@ -149,17 +136,12 @@ class AboutUsHandler(webapp2.RequestHandler):
         self.response.write(template.render(template_vars))
 
 
-        #template = jinja_current_directory.get_template('templates/myfeed.html')
-        #self.response.write(template.render())
-        '''
-
-
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    #('/aboutus', AboutUsHandler),
+    ('/aboutus', AboutUsHandler),
     ('/myhome', MyHomeHandler),
-#    ('/myfeed', MyFeedHandler)
+    ('/myfeed', MyFeedHandler)
 ], debug=True)
 
 class User(ndb.Model):
