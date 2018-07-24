@@ -73,8 +73,10 @@ class MyHomeHandler(webapp2.RequestHandler):
         description=self.request.get("recipe_description")
         ingredients=self.request.get("recipe_ingredients")
         instructions=self.request.get("recipe_instructions")
+
         user = users.get_current_user()
-        userproperty=User.query(User.username==user.nickname()).fetch()[0]
+        if(user):
+            userproperty=User.query(User.username==user.nickname()).fetch()[0]
 
         print
         print
@@ -83,12 +85,47 @@ class MyHomeHandler(webapp2.RequestHandler):
         print userproperty
         print userproperty.key
 
+
+
+        recipe=Recipe(name=name,description=description,ingredients=ingredients,
+                instructions=instructions, owner=userproperty.key)
+        key=recipe.put()
+
+        print key
+
+        userperson=userproperty.key.get()
+        userperson.recipe.append(key)
+        userperson.put()
+
+        print
+        print
+        print
         print "list:"
         print userproperty.recipe
 
+        template_vars={
+            "username":userperson.username,
+            "recipe":userproperty.recipe
+        }
+        #count=0
+        #print userproperty.recipe.name
+        #userproperty.recipe.append(key).put()
+        template = jinja_current_directory.get_template('templates/myprofile.html')
+        self.response.write(template.render(template_vars))
+        for x,y in template_vars.items():
+            print (x,y)
 
+'''
+<<<<<<< HEAD
 class AboutUsHandler(webapp2.RequestHandler):
     def get(self):
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+        logout_url = users.create_logout_url('/')
+=======
+=======
+>>>>>>> 1c949aa08fddcaf4c3ff2bd84c9361bbea71dd7c
         user = users.get_current_user()
 
         #assign these to something so the python runs no matter what
@@ -100,6 +137,10 @@ class AboutUsHandler(webapp2.RequestHandler):
             print nickname
 
 
+<<<<<<< HEAD
+>>>>>>> 1c949aa08fddcaf4c3ff2bd84c9361bbea71dd7c
+=======
+>>>>>>> 1c949aa08fddcaf4c3ff2bd84c9361bbea71dd7c
         template_vars = {
             "user": user,
             "logout_url": logout_url,
@@ -110,13 +151,13 @@ class AboutUsHandler(webapp2.RequestHandler):
 
         #template = jinja_current_directory.get_template('templates/myfeed.html')
         #self.response.write(template.render())
-
+        '''
 
 
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/aboutus', AboutUsHandler),
+    #('/aboutus', AboutUsHandler),
     ('/myhome', MyHomeHandler),
 #    ('/myfeed', MyFeedHandler)
 ], debug=True)
