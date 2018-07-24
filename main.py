@@ -66,6 +66,10 @@ class MyHomeHandler(webapp2.RequestHandler):
         instructions=instructions)
         key=recipe.put()
         print key
+
+
+        template = jinja_current_directory.get_template('templates/myfeed.html')
+        self.response.write(template.render(template_vars))
 #********
 
 #********
