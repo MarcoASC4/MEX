@@ -30,17 +30,27 @@ html {
   justify-content: flex-end;
 }
 
-.add_recipe {
-  background-color: white;
 
-  width: 500px;
-  font-size: 20px;
-  font-family: 'Lato', sans-serif;
-  text-align: center;
-  color: black;
+.add_recipe {
   height: fit-content;
   display: flex;
   justify-content: center;
 /* Main axis is horizontal */
 
+}
+
+
+form {
+    background-color: white;
+    width: 500px;
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    color: black;
+}
+
+button {
+  height: 50px;
+  width: 70px;
+  font-size: 20px;
 }
