@@ -17,6 +17,14 @@ html, body {
 
 }
 
+h3 {
+  font-size: 70px;
+}
+
+h4 {
+  font-size: 50px;
+}
+
 html {
   background: url(food.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;

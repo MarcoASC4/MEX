@@ -12,8 +12,6 @@ html, body {
   margin: 0;
   padding: 0;
   /* font-family: 'Helvetica', cursive; */
-
->>>>>>> 222d18a36ed4d0e14075e7900cf0e8a6ad7ba8a0
 }
 
 html {
@@ -27,4 +25,10 @@ html {
 .heady .navlinks {
 /* Main axis is horizontal */
   justify-content: flex-end;
+}
+
+.profileHeader {
+  background-color: gray;
+  height: 160px;
+
 }

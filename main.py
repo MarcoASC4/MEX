@@ -119,13 +119,28 @@ class MyHomeHandler(webapp2.RequestHandler):
 <<<<<<< HEAD
 class AboutUsHandler(webapp2.RequestHandler):
     def get(self):
+<<<<<<< HEAD
 
         logout_url = users.create_logout_url('/')
+=======
+        user = users.get_current_user()
+
+        #assign these to something so the python runs no matter what
+        logout_url = None
+
+        if user:
+            nickname = user.nickname()
+            logout_url = users.create_logout_url('/')
+            print nickname
+
+
+>>>>>>> 1c949aa08fddcaf4c3ff2bd84c9361bbea71dd7c
         template_vars = {
+            "user": user,
             "logout_url": logout_url,
             }
         template = jinja_current_directory.get_template('templates/aboutus.html')
-        self.response.write(template.render())
+        self.response.write(template.render(template_vars))
 
 
         #template = jinja_current_directory.get_template('templates/myfeed.html')
