@@ -6,6 +6,7 @@
   align-items: center;
   font-family: 'Shadows Into Light', cursive;
   font-size: 20px;
+  margin-bottom: 20px;
 }
 
 html, body {
@@ -31,18 +32,15 @@ html {
 
 .add_recipe {
   background-color: white;
+
   width: 500px;
   font-size: 20px;
   font-family: 'Lato', sans-serif;
   text-align: center;
   color: black;
   height: fit-content;
-  position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-
+  display: flex;
+  justify-content: center;
 /* Main axis is horizontal */
 
 }
