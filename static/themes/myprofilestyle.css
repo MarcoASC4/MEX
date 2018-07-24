@@ -11,8 +11,10 @@
 html, body {
   margin: 0;
   padding: 0;
+  color: #222;
   /* font-family: 'Helvetica', cursive; */
 }
+
 
 html {
   background: url(food.jpg) no-repeat center center fixed;
@@ -28,7 +30,6 @@ html {
 }
 
 .profileHeader {
-  border: 2px solid black;
   background-color: white;
   margin: 0px 150px 0px 150px;
   height: 750px;
@@ -38,12 +39,35 @@ html {
 
 .picetbio {
   background-color: gray;
-  margin-top: ;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   width: 0 auto;
   height: 200px;
 }
 
-.postwork {
+.picetbio * {
+  border: purple solid;
+}
+
+.pic {
+  width: 200px;
+  height: 175px;
+  margin:
+}
+
+.name {
+  width: 200px;
+  height: 175px;
+
+}
+
+.bio {
+  width: 700px;
+  height: 175px;
+}
+
+/*.postwork {
   background-color: white;
   width: 0 auto;
   height: 600px;
