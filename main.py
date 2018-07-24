@@ -88,8 +88,8 @@ class MyHomeHandler(webapp2.RequestHandler):
         userperson.put()
 
         template_vars={
-            "username":userperson.username,
-            "recipes":userproperty.recipe
+            "usernames": userperson.username,
+            "recipes": userproperty.recipe
         }
         #count=0
         #print userproperty.recipe.name

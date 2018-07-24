@@ -12,6 +12,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  /* color: #333; */
   /* font-family: 'Helvetica', cursive; */
 
 >>>>>>> 222d18a36ed4d0e14075e7900cf0e8a6ad7ba8a0
@@ -53,7 +54,7 @@ form {
     font-family: 'Lato', sans-serif;
     font-weight: bold;
     text-align: center;
-    color: black;
+
 }
 
 button {
