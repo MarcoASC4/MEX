@@ -97,21 +97,29 @@ class MyHomeHandler(webapp2.RequestHandler):
         userperson.recipe.append(key)
         userperson.put()
 
+        print
+        print
+        print
         print "list:"
         print userproperty.recipe
 
+        template_vars={
+            "username":userperson.username,
+            "recipe":userproperty.recipe
+        }
+        #count=0
+        #print userproperty.recipe.name
         #userproperty.recipe.append(key).put()
-
-
-
-        print
-
+        template = jinja_current_directory.get_template('templates/myprofile.html')
+        self.response.write(template.render(template_vars))
+        for x,y in template_vars.items():
+            print (x,y)
 
 '''
 <<<<<<< HEAD
 class AboutUsHandler(webapp2.RequestHandler):
     def get(self):
-        
+
         logout_url = users.create_logout_url('/')
         template_vars = {
             "logout_url": logout_url,
