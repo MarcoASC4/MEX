@@ -6,7 +6,7 @@
   align-items: center;
   font-family: 'Shadows Into Light', cursive;
   font-size: 20px;
-  margin-bottom: 20px;
+
 }
 
 html, body {
@@ -29,4 +29,14 @@ html {
 /* Main axis is horizontal */
   justify-content: flex-end;
   font-size: 30px;
+}
+
+.maincontent {
+
+}
+
+.maintext {
+  background-color: white;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
 }
