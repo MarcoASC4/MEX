@@ -11,22 +11,25 @@
     <div class='heady'>
       <h1>Welcome to MEX</h1>
       <h2 class='spacer'> The best recipe sharing website</h2>
-      <div>
+      
+    </div>
+
+    <div class='container'>
+      <img class='slides' src='/static/themes/food.jpg'>
+      <img class='slides' src='/static/themes/food2.jpg'>
+      <img class='slides' src='/static/themes/food3.jpg'>
+      <div class='loginbox'>
         {% if user %}
           <br>
+          <button>
           <a href="{{logout_url}}">Sign out</a>
+          </button>
           {% else %}
           <button class='buttonete'>
           <a href="{{login_url}}">Sign in</a>
           </button>
           {% endif %}
       </div>
-    </div>
-
-    <div>
-      <img class='slides' src='/static/themes/food.jpg'>
-      <img class='slides' src='/static/themes/food2.jpg'>
-      <img class='slides' src='/static/themes/food3.jpg'>
     </div>
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
     <script src="static/scripts/recipe.js"></script>

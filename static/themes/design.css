@@ -5,11 +5,29 @@
   justify-content: space-evenly;
   align-items: center;
 }
+
+.container {
+  position: relative;
+  text-align: center;
+}
+
+.loginbox {
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 200px;
+    background-color: white;
+}
+
+
+
+
 .slides {
   margin: 0 auto;
   width: 1000px;
   height: 750px;
-
 }
 
 html, body {
