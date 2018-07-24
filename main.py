@@ -66,7 +66,7 @@ class MyHomeHandler(webapp2.RequestHandler):
                 print
 
         template = jinja_current_directory.get_template('templates/home.html')
-        self.response.write(template.render())
+        self.response.write(template.render(template_vars))
 
     def post(self):
         name=self.request.get("recipe_title")
@@ -89,8 +89,23 @@ class MyHomeHandler(webapp2.RequestHandler):
 
 class AboutUsHandler(webapp2.RequestHandler):
     def get(self):
+        user = users.get_current_user()
+
+        #assign these to something so the python runs no matter what
+        logout_url = None
+
+        if user:
+            nickname = user.nickname()
+            logout_url = users.create_logout_url('/')
+            print nickname
+
+
+        template_vars = {
+            "user": user,
+            "logout_url": logout_url,
+            }
         template = jinja_current_directory.get_template('templates/aboutus.html')
-        self.response.write(template.render())
+        self.response.write(template.render(template_vars))
 
 
         #template = jinja_current_directory.get_template('templates/myfeed.html')
