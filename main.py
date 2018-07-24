@@ -86,6 +86,13 @@ class MyHomeHandler(webapp2.RequestHandler):
         print "list:"
         print userproperty.recipe
 
+<<<<<<< HEAD
+=======
+class AboutUsHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_current_directory.get_template('templates/aboutus.html')
+        self.response.write(template.render())
+>>>>>>> 5df214fa51c5b5513a81c72b84eb76ed4b2d510a
 
         recipe=Recipe(name=name,description=description,ingredients=ingredients,
         instructions=instructions, owner=userproperty.key)
@@ -100,6 +107,10 @@ class MyHomeHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
+<<<<<<< HEAD
+=======
+    ('/aboutus', AboutUsHandler),
+>>>>>>> 5df214fa51c5b5513a81c72b84eb76ed4b2d510a
     ('/myhome', MyHomeHandler),
 #    ('/myfeed', MyFeedHandler)
 ], debug=True)
