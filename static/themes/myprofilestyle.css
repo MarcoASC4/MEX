@@ -27,6 +27,7 @@ html {
 .heady .navlinks {
 /* Main axis is horizontal */
   justify-content: flex-end;
+  font-size: 30px;
 }
 
 .profileHeader {
@@ -67,7 +68,7 @@ html {
   height: 175px;
 }
 
-/*.postwork {
+.recipes {
   background-color: white;
   width: 0 auto;
   height: 600px;
