@@ -17,6 +17,10 @@ html, body {
 >>>>>>> 222d18a36ed4d0e14075e7900cf0e8a6ad7ba8a0
 }
 
+body {
+  background-color: rgba(255, 255, 255, 0.5);
+
+  }
 html {
   background: url(food.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -40,13 +44,14 @@ html {
 
 }
 
-
+h1 {
+  font-size: 40px;
+}
 form {
-    background-color: rgba(255, 255, 255, 0.5);
-
     width: 500px;
-    font-size: 20px;
+    font-size: 30px;
     font-family: 'Lato', sans-serif;
+    font-weight: bold;
     text-align: center;
     color: black;
 }
