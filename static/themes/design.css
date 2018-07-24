@@ -4,7 +4,10 @@
   justify-content: space-evenly;
   align-items: center;
 }
-.buttonete {
+.slides {
+  margin: 0 auto;
+  width: 1000px;
+  height: 750px;
 
 }
 
@@ -12,9 +15,6 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Snell Roundhand', cursive;
-=======
-
->>>>>>> 222d18a36ed4d0e14075e7900cf0e8a6ad7ba8a0
 }
 
 /* body {
