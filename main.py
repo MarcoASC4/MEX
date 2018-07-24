@@ -20,17 +20,19 @@ class MainHandler(webapp2.RequestHandler):
         logout_url = None
         login_url = None
 
-        added=False
 
         if user:
             nickname = user.nickname()
             logout_url = users.create_logout_url('/')
+            userquery=User.query(User.username==nickname).fetch()
+            print "query::::"
+            print userquery
+
             print("logged in")
-            if added is False:
-                usertest=User(username=nickname, recipe=["cake","bake"])
+            if len(userquery)==0:
+                usertest=User(username=nickname, recipe=["cake","bake","take"])
                 key=usertest.put()
                 print key
-                added=True
         else:
             login_url = users.create_login_url('/myhome')
             print ("logged out")
@@ -55,6 +57,20 @@ class MyHomeHandler(webapp2.RequestHandler):
         template = jinja_current_directory.get_template('templates/home.html')
         self.response.write(template.render(template_vars))
 
+    def post(self):
+        name=self.request.get("recipe_title")
+        description=self.request.get("recipe_description")
+        ingredients=self.request.get("recipe_ingredients")
+        instructions=self.request.get("recipe_instructions")
+        recipe=Recipe(name=name,description=description,ingredients=ingredients,
+        instructions=instructions)
+        key=recipe.put()
+        print key
+#********
+
+#********
+
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/myhome', MyHomeHandler)
@@ -63,3 +79,9 @@ app = webapp2.WSGIApplication([
 class User(ndb.Model):
     username=ndb.StringProperty()
     recipe=ndb.StringProperty(repeated=True)
+
+class Recipe(ndb.Model):
+    name=ndb.StringProperty()
+    description=ndb.StringProperty()
+    ingredients=ndb.StringProperty()
+    instructions=ndb.StringProperty()
