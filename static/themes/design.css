@@ -7,8 +7,29 @@
   font-family: 'Shadows Into Light', cursive;
   font-size: 20px;
 }
-.buttonete {
 
+.container {
+  position: relative;
+  text-align: center;
+}
+
+.loginbox {
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 200px;
+    background-color: white;
+}
+
+
+
+
+.slides {
+  margin: 0 auto;
+  width: 1000px;
+  height: 750px;
 }
 
 html, body {
@@ -16,7 +37,7 @@ html, body {
   padding: 0;
 =======
 
->>>>>>> 222d18a36ed4d0e14075e7900cf0e8a6ad7ba8a0
+>>>>>>> edd1f1dfff8dcaee880694834b4bde359c8b0263
 }
 
 /* body {
