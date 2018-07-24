@@ -16,19 +16,16 @@
 
     <div class='container'>
       <img class='slides' src='/static/themes/food.jpg'>
-      <img class='slides' src='/static/themes/food4.jpg'>
-      <img class='slides' src='/static/themes/food5.jpg'>
+      <img class='slides' src='/static/themes/food2.jpg'>
+      <img class='slides' src='/static/themes/food3.jpg'>
       <div class='loginbox'>
         {% if user %}
           <br>
           <button class='buttonete'>
           <a href="{{logout_url}}">Sign out</a>
           </button>
-          <br>
-          <button>
-          <a href="/myhome">Add a new recipe</a>
-        </button>
           {% else %}
+          <br>
           <button class='buttonete'>
           <a href="{{login_url}}">Sign in</a>
           </button>
