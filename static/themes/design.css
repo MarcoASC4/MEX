@@ -1,5 +1,6 @@
 .heady {
   background-color: #ff1919;
+  height: 80px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -11,7 +12,8 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: 'Snell Roundhand', cursive;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 20px;
 =======
 
 >>>>>>> 222d18a36ed4d0e14075e7900cf0e8a6ad7ba8a0
