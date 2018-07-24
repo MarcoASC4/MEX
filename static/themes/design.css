@@ -6,6 +6,10 @@
   align-items: center;
 }
 
+#about_us_link {
+  font-size: 30px;
+}
+
 .container {
   position: relative;
   text-align: center;

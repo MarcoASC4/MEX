@@ -6,7 +6,7 @@
   align-items: center;
   font-family: 'Shadows Into Light', cursive;
   font-size: 20px;
-  margin-bottom: 20px;
+
 }
 
 html, body {
@@ -14,7 +14,7 @@ html, body {
   padding: 0;
   /* font-family: 'Helvetica', cursive; */
 
->>>>>>> 222d18a36ed4d0e14075e7900cf0e8a6ad7ba8a0
+
 }
 
 html {
@@ -29,4 +29,14 @@ html {
 /* Main axis is horizontal */
   justify-content: flex-end;
   font-size: 30px;
+}
+
+.maincontent {
+
+}
+
+.maintext {
+  background-color: white;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
 }

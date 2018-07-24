@@ -57,56 +57,62 @@ class MyHomeHandler(webapp2.RequestHandler):
         if(user):
             userquery=User.query(User.username==user.nickname()).fetch()
             if(len(userquery)==0):
-                usertest=User(username=user.nickname(), recipe=["cake","bake","take"])
+                usertest=User(username=user.nickname(), recipe=[])
                 key=usertest.put()
                 print key
+                print user
+                print
+                print
+                print
 
         template = jinja_current_directory.get_template('templates/home.html')
-        self.response.write(template.render(template_vars))
+        self.response.write(template.render())
 
     def post(self):
         name=self.request.get("recipe_title")
         description=self.request.get("recipe_description")
         ingredients=self.request.get("recipe_ingredients")
         instructions=self.request.get("recipe_instructions")
-        recipe=Recipe(name=name,description=description,ingredients=ingredients,
-        instructions=instructions)
-        key=recipe.put()
-        print key
+        user = users.get_current_user()
+        userproperty=User.query(User.username==user.nickname()).fetch()[0]
 
+        print
+        print
+        print
+        print user
+        print userproperty
+        print userproperty.key
 
-        template = jinja_current_directory.get_template('templates/myfeed.html')
-        self.response.write(template.render())
+        print "list:"
+        print userproperty.recipe
+
 
 class AboutUsHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_current_directory.get_template('templates/aboutus.html')
         self.response.write(template.render())
 
-class MyFeedHandler(webapp2.RequestHandler):
-    def get(self):
+
+        #template = jinja_current_directory.get_template('templates/myfeed.html')
+        #self.response.write(template.render())
 
 
-        template = jinja_current_directory.get_template('templates/myfeed.html')
-        self.response.write(template.render())
-#********
-
-#********
 
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/aboutus', AboutUsHandler),
     ('/myhome', MyHomeHandler),
-    ('/myfeed', MyFeedHandler)
+#    ('/myfeed', MyFeedHandler)
 ], debug=True)
 
 class User(ndb.Model):
     username=ndb.StringProperty()
-    recipe=ndb.StringProperty(repeated=True)
+    recipe=ndb.KeyProperty(kind="Recipe", repeated=True)
 
 class Recipe(ndb.Model):
     name=ndb.StringProperty()
     description=ndb.StringProperty()
     ingredients=ndb.StringProperty()
     instructions=ndb.StringProperty()
+    owner=ndb.KeyProperty(kind="User")
