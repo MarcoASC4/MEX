@@ -77,6 +77,13 @@ class MyHomeHandler(webapp2.RequestHandler):
 
         template = jinja_current_directory.get_template('templates/myfeed.html')
         self.response.write(template.render())
+
+class MyFeedHandler(webapp2.RequestHandler):
+    def get(self):
+
+
+        template = jinja_current_directory.get_template('templates/myfeed.html')
+        self.response.write(template.render())
 #********
 
 #********
@@ -84,7 +91,8 @@ class MyHomeHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/myhome', MyHomeHandler)
+    ('/myhome', MyHomeHandler),
+    ('/myfeed', MyFeedHandler)
 ], debug=True)
 
 class User(ndb.Model):

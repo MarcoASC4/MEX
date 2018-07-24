@@ -7,7 +7,8 @@
 
     <link rel="stylesheet" href="static/themes/homestyle.css">
   </head>
-  <body>
+
+    <header>
     <div class='heady'>
       <h1>Welcome to MEX</h1>
       <h2 class='spacer'> The best recipe sharing website</h2>
@@ -17,7 +18,9 @@
       <br>
         <a href="{{logout_url}}">Sign out</a>
       </div>
+    </header>
     </div>
+    <body>
     <div class="add_recipe">
     <form method = "post">
         <h1> Add a new recipe </h1>
@@ -25,15 +28,15 @@
         <input type="text" name="recipe_title"/>
         <p>Recipe Description:
           <br>
-          <textarea name="recipe_description" rows="4" cols="50"/>
+          <textarea name="recipe_description" rows="8" cols="50"/>
           </textarea>
         <p>Enter your ingredients:
           <br>
-        <textarea name="recipe_ingredients" rows="4" cols="50"/>
+        <textarea name="recipe_ingredients" rows="10" cols="50"/>
         </textarea>
         <p>Recipe instructions:
           <br>
-        <textarea name="recipe_instructions" rows="4" cols="50"/>
+        <textarea name="recipe_instructions" rows="20" cols="50"/>
         </textarea>
         <p>Add a photo of your food:
           <br>
