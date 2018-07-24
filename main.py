@@ -78,30 +78,14 @@ class MyHomeHandler(webapp2.RequestHandler):
         if(user):
             userproperty=User.query(User.username==user.nickname()).fetch()[0]
 
-        print
-        print
-        print
-        print user
-        print userproperty
-        print userproperty.key
-
-
 
         recipe=Recipe(name=name,description=description,ingredients=ingredients,
                 instructions=instructions, owner=userproperty.key)
         key=recipe.put()
 
-        print key
-
         userperson=userproperty.key.get()
         userperson.recipe.append(key)
         userperson.put()
-
-        print
-        print
-        print
-        print "list:"
-        print userproperty.recipe
 
         template_vars={
             "username":userperson.username,
@@ -112,9 +96,9 @@ class MyHomeHandler(webapp2.RequestHandler):
         #userproperty.recipe.append(key).put()
         template = jinja_current_directory.get_template('templates/myprofile.html')
         self.response.write(template.render(template_vars))
-        for x,y in template_vars.items():
-            print (x,y)
-            
+    #    for x,y in template_vars.items():
+    #        print (x,y)
+
 class AboutUsHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
