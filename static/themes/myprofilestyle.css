@@ -28,7 +28,23 @@ html {
 }
 
 .profileHeader {
-  background-color: gray;
-  height: 160px;
+  border: 2px solid black;
+  background-color: white;
+  margin: 0px 150px 0px 150px;
+  height: 750px;
+  display: flex;
+  flex-direction: column;
+}
 
+.picetbio {
+  background-color: gray;
+  margin-top: ;
+  width: 0 auto;
+  height: 200px;
+}
+
+.postwork {
+  background-color: white;
+  width: 0 auto;
+  height: 600px;
 }

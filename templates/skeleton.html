@@ -22,14 +22,15 @@
       <div class='loginbox'>
         {% if user %}
           <br>
-          <button class='buttonete'>
-          <a href="{{logout_url}}">Sign out</a>
+          <a href="{{logout_url}}"><button class='buttonete'>Sign Out
           </button>
+          </a>
           {% else %}
           <br>
-          <button class='buttonete'>
-          <a href="{{login_url}}">Sign in</a>
+          <a href="{{login_url}}"><button class='buttonete'>Sign In
+
           </button>
+          </a>
           {% endif %}
       </div>
     </div>
