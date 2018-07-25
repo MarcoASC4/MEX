@@ -75,28 +75,36 @@ class MyHomeHandler(webapp2.RequestHandler):
         instructions=self.request.get("recipe_instructions")
 
         user = users.get_current_user()
+        print user
+
         if(user):
             userproperty=User.query(User.username==user.nickname()).fetch()[0]
 
+        print userproperty
 
         recipe=Recipe(name=name,description=description,ingredients=ingredients,
                 instructions=instructions, owner=userproperty.key)
         key=recipe.put()
+        print key
 
-        userperson=userproperty.key.get()
-        userperson.recipe.append(key)
-        userperson.put()
 
-        recipes = []
-        for key in userperson.recipe:
-            recipes.append(key.get())
+        userproperty.recipes.append(key)
+        print(userproperty.recipes)
+        userproperty.put()
 
+
+        recipes_list = []
+        for key in userproperty.recipes:
+            recipes_list.append(key.get())
+
+        #users_list = []
+        #for userproperty.key in users:
+        #    users_list.append(userproperty.key.get())
 
 
         template_vars={
-    
-            "usernames": userperson.username,
-            "recipes": recipes
+            "username": userproperty.username,
+            "recipes": recipes_list
         }
 
         #count=0
@@ -177,7 +185,7 @@ app = webapp2.WSGIApplication([
 
 class User(ndb.Model):
     username=ndb.StringProperty()
-    recipe=ndb.KeyProperty(kind="Recipe", repeated=True)
+    recipes=ndb.KeyProperty(kind="Recipe", repeated=True)
 
 class Recipe(ndb.Model):
     name=ndb.StringProperty()
