@@ -73,20 +73,22 @@ html {
   overflow: hidden;
 }
 
+.recipes * 
+}
+
 .recipes {
-  background-color: #FFE066;
   width: 0 auto;
+  margin-left: 150px;
+  margin-right: 150px;
+
 }
 
 .post1 {
-<<<<<<< HEAD
-  background-color: #ED6607;
+  background-color: #FF1919;
   margin: 0px 150px 0px 150px;
-=======
-  background-color: grey;
->>>>>>> c20e0b7fb878f981c90f42b498a01ed7b41c975c
 }
 
 .subposts {
-  background-color: #FBFFB9;
+  background-color: #FFE066;
+
 }
