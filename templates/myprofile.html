@@ -35,7 +35,7 @@
         <div>
         <article class='post1'>
           <h2>{{recipe.name}} by {{username}} <br>
-             {{recipe.datetime}}</h2>
+             {{recipe.datetime.strftime("%a %B %d, %Y - %I:%M %p")}}</h2>
           <article class='subposts'>
             <h2> Recipe Description</h2>
             <p> {{recipe.description}}</p>

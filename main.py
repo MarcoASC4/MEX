@@ -1,7 +1,7 @@
 import jinja2
 import os
 import webapp2
-import datetime
+from datetime import datetime
 from pytz import timezone
 from google.appengine.api import users
 from google.appengine.ext import ndb
@@ -77,7 +77,15 @@ class PostHandler(webapp2.RequestHandler):
         description=self.request.get("recipe_description")
         ingredients=self.request.get("recipe_ingredients")
         instructions=self.request.get("recipe_instructions")
-        date_time=datetime.datetime.now()
+        fmt = "%a %B %d, %Y - %I:%M %p"
+
+        # Current time in UTC
+        now_utc = datetime.now(timezone('UTC'))
+
+        # Convert to US/Pacific time zone
+        now_time = now_utc.astimezone(timezone('US/Eastern'))
+        print now_time
+        # currenttime = now_time.strftime(fmt)
         #datetime_in_eastern=date_time.datetime.astimezone(timezone('US/Eastern'))
         #date_time=datetime.datetime.now()
         # printdatetime = date_time.strftime("%a, %b %d, - %Y %I:%M: %p ")
@@ -91,7 +99,7 @@ class PostHandler(webapp2.RequestHandler):
         #print userproperty
 
         recipe=Recipe(name=name,description=description,ingredients=ingredients,
-                instructions=instructions, owner=userproperty.key, datetime=date_time)
+                instructions=instructions, owner=userproperty.key, datetime=now_time)
         key=recipe.put()
         #print key
 
