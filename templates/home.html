@@ -10,20 +10,30 @@
 
     <header>
     <div class='heady'>
-      <h1>Welcome to MEX: The best recipe sharing website</h1>
+      <h1>MEX: The best recipe sharing website</h1>
       <br>
     <!--  <h2 class='spacer'> The best recipe sharing website</h2> -->
-      <a class="navlinks" href="/home">Home</a>
-      <a class="navlinks" href="/aboutus">About Us</a>
-      <a class="navlinks" href="/post">Post</a>
+    {% if user %}
+    <a class="navlinks" href="/myhome">Home</a>
+    <a class="navlinks" href="/aboutus">About Us</a>
+    <a class="navlinks" href="/post">Post</a>
       <a class="navlinks" href="/myprofile">Profile</a>
       <a class="navlinks" href="/myfeed">Feed</a>
         <a class="navlinks" href="{{logout_url}}">Sign out</a>
+    {% else %}
+      <a class="navlinks" href="/">Back to Homepage</a>
+    {% endif %}
       </div>
     </header>
-    </div>
     <body>
-    
+    <div class="maincontent">
+      <div class="maintext">
+      <h3>Welcome!</h3>
+
+      </div>
+    </div>
+
+
 
 
 

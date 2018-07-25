@@ -6,19 +6,26 @@
   align-items: center;
   font-family: 'Shadows Into Light', cursive;
   font-size: 20px;
+
 }
 
 html, body {
   margin: 0;
   padding: 0;
-  color: #222;
-    background-color: rgba(255, 255, 255, 0.5);
+
   /* font-family: 'Helvetica', cursive; */
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  background-color: rgba(255, 255, 255, 0.5);
+}
 
+h3 {
+  font-size: 70px;
+}
+
+h4 {
+  font-size: 50px;
 }
 
 html {
@@ -35,53 +42,23 @@ html {
   font-size: 30px;
 }
 
-.profileHeader {
-  background-color: #ffdead;
-  margin: 0px 150px 0px 150px;
-  height: 200px;
+.maincontent {
   display: flex;
+  background-color: rgba(255, 255, 255, 0.5);
   flex-direction: column;
-}
-
-.picetbio {
-  display: flex;
-  justify-content: space-evenly;
   align-items: center;
-  width: 0 auto;
-  height: 200px;
 }
 
-.picetbio * {
-  border: purple solid;
-}
+.maintext {
 
-.pic {
-  width: 200px;
-  height: 175px;
-  margin:
-}
-
-.name {
-  width: 200px;
-  height: 175px;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
 
 }
 
-.bio {
-  width: 700px;
-  height: 175px;
-  overflow: hidden;
-}
+.content {
+  font-size: 30px;
 
-.recipes {
-  background-color: brown;
-  width: 0 auto;
-}
 
-.post1 {
-  background-color: grey;
-}
-
-.subposts {
-  background-color: white;
+  text-align: center;
 }
