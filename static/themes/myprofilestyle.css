@@ -12,7 +12,7 @@ html, body {
   margin: 0;
   padding: 0;
   color: #222;
-    background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   /* font-family: 'Helvetica', cursive; */
 }
 
@@ -76,12 +76,15 @@ html {
 .recipes {
   background-color: #FFE066;
   width: 0 auto;
-  margin: 0px 150px 0px 150px;
 }
 
 .post1 {
+<<<<<<< HEAD
   background-color: #ED6607;
   margin: 0px 150px 0px 150px;
+=======
+  background-color: grey;
+>>>>>>> c20e0b7fb878f981c90f42b498a01ed7b41c975c
 }
 
 .subposts {

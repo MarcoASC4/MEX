@@ -32,7 +32,7 @@ class MainHandler(webapp2.RequestHandler):
             #if len(userquery)==0:
 
         else:
-            login_url = users.create_login_url('/home')
+            login_url = users.create_login_url('/myhome')
             print ("logged out")
 
 
@@ -190,12 +190,13 @@ class MyProfileHandler(webapp2.RequestHandler):
             logout_url = users.create_logout_url('/')
             print nickname
 
-        get_back_recipes = Recipe.query(Recipe.owner==userproperty.key).fetch()
-        print get_back_recipes
+        get_back_user_recipes = Recipe.query(Recipe.owner==userproperty.key).fetch()
+
+        print get_back_user_recipes
 
         retrieved_recipes=[]
 
-        for recipe in get_back_recipes:
+        for recipe in get_back_user_recipes:
             retrieved_recipes.append(recipe)
 
 
