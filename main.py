@@ -2,7 +2,7 @@ import jinja2
 import os
 import webapp2
 from datetime import datetime
-from pytz import timezone
+#from pytz import timezone
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
@@ -92,6 +92,7 @@ class PostHandler(webapp2.RequestHandler):
         # printdatetime = date_time.strftime("%a, %b %d, - %Y %I:%M: %p ")
 
         user = users.get_current_user()
+        nickname = user.nickname()
         #print user
 
 
@@ -121,11 +122,14 @@ class PostHandler(webapp2.RequestHandler):
         #    users_list.append(userproperty.key.get())
 
         print recipes_list
+
+
         #print recipes_list.sort(key=lambda r: r.datetime)
 
         template_vars={
             "username": userproperty.username,
             "recipes": recipes_list,
+            "nickname": nickname,
         }
 
         #count=0
