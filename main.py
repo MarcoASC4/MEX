@@ -77,14 +77,15 @@ class PostHandler(webapp2.RequestHandler):
         description=self.request.get("recipe_description")
         ingredients=self.request.get("recipe_ingredients")
         instructions=self.request.get("recipe_instructions")
-        fmt = "%a %B %d, %Y - %I:%M %p"
-
+        #fmt = "%a %B %d, %Y - %I:%M %p"
+        #tz = timezone('America/New_York')
         # Current time in UTC
-        now_utc = datetime.now(timezone('UTC'))
+        #now_utc = datetime.now(tz)
+        #print now_utc
 
         # Convert to US/Pacific time zone
-        now_time = now_utc.astimezone(timezone('US/Eastern'))
-        print now_time
+        #now_time = now_utc.astimezone(timezone('US/Eastern'))
+        #print now_time
         # currenttime = now_time.strftime(fmt)
         #datetime_in_eastern=date_time.datetime.astimezone(timezone('US/Eastern'))
         #date_time=datetime.datetime.now()
@@ -93,13 +94,13 @@ class PostHandler(webapp2.RequestHandler):
         user = users.get_current_user()
         #print user
 
-        if(user):
-            userproperty=User.query(User.username==user.nickname()).fetch()[0]
+
+        userproperty=User.query(User.username==user.nickname()).fetch()[0]
 
         #print userproperty
 
         recipe=Recipe(name=name,description=description,ingredients=ingredients,
-                instructions=instructions, owner=userproperty.key, datetime=now_time)
+                instructions=instructions, owner=userproperty.key, datetime=datetime.now())
         key=recipe.put()
         #print key
 
@@ -113,16 +114,18 @@ class PostHandler(webapp2.RequestHandler):
         for key in userproperty.recipes:
             recipes_list.append(key.get())
 
-        print(recipes_list)
+        #print(recipes_list)
 
         #users_list = []
         #for userproperty.key in users:
         #    users_list.append(userproperty.key.get())
 
+        print recipes_list
+        #print recipes_list.sort(key=lambda r: r.datetime)
 
         template_vars={
             "username": userproperty.username,
-            "recipes": recipes_list
+            "recipes": recipes_list,
         }
 
         #count=0
