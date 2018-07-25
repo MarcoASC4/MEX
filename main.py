@@ -87,10 +87,18 @@ class MyHomeHandler(webapp2.RequestHandler):
         userperson.recipe.append(key)
         userperson.put()
 
+        recipes = []
+        for key in userperson.recipe:
+            recipes.append(key.get())
+
+
+
         template_vars={
+    
             "usernames": userperson.username,
-            "recipes": userproperty.recipe
+            "recipes": recipes
         }
+
         #count=0
         #print userproperty.recipe.name
         #userproperty.recipe.append(key).put()
