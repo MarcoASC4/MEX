@@ -32,7 +32,7 @@ class MainHandler(webapp2.RequestHandler):
             #if len(userquery)==0:
 
         else:
-            login_url = users.create_login_url('/myhome')
+            login_url = users.create_login_url('/post')
             print ("logged out")
 
 
@@ -46,7 +46,7 @@ class MainHandler(webapp2.RequestHandler):
         template = jinja_current_directory.get_template('templates/skeleton.html')
         self.response.write(template.render(template_vars))
 
-class MyHomeHandler(webapp2.RequestHandler):
+class PostHandler(webapp2.RequestHandler):
     def get(self):
         logout_url = users.create_logout_url('/')
         template_vars = {
@@ -65,7 +65,7 @@ class MyHomeHandler(webapp2.RequestHandler):
                 print
                 print
 
-        template = jinja_current_directory.get_template('templates/home.html')
+        template = jinja_current_directory.get_template('templates/post.html')
         self.response.write(template.render(template_vars))
 
     def post(self):
@@ -178,7 +178,7 @@ class MyProfileHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/aboutus', AboutUsHandler),
-    ('/myhome', MyHomeHandler),
+    ('/post', PostHandler),
     ('/myfeed', MyFeedHandler),
     ('/myprofile', MyProfileHandler)
 ], debug=True)
