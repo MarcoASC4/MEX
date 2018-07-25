@@ -36,7 +36,7 @@ html {
 }
 
 .profileHeader {
-  background-color: #ffdead;
+  background-color: #FFE066;
   margin: 0px 150px 0px 150px;
   height: 200px;
   display: flex;
@@ -74,16 +74,16 @@ html {
 }
 
 .recipes {
-  background-color: ##FF884D;
+  background-color: #FFE066;
   width: 0 auto;
   margin: 0px 150px 0px 150px;
 }
 
 .post1 {
-  background-color: grey;
+  background-color: #ED6607;
   margin: 0px 150px 0px 150px;
 }
 
 .subposts {
-  background-color: white;
+  background-color: #FBFFB9;
 }
