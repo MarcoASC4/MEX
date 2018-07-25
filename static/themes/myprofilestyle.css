@@ -71,10 +71,12 @@ html {
 .recipes {
   background-color: brown;
   width: 0 auto;
+  margin: 0px 150px 0px 150px;
 }
 
 .post1 {
   background-color: grey;
+  margin: 0px 150px 0px 150px;
 }
 
 .subposts {
