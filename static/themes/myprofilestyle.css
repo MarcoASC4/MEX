@@ -51,7 +51,7 @@ html {
 }
 
 .picetbio * {
-  border: purple solid;
+
 }
 
 .pic {
@@ -73,7 +73,7 @@ html {
 }
 
 .recipes {
-  background-color: brown;
+  background-color: ##FF884D;
   width: 0 auto;
   margin: 0px 150px 0px 150px;
 }
