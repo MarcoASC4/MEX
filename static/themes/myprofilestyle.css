@@ -33,7 +33,7 @@ html {
 .profileHeader {
   background-color: #ffdead;
   margin: 0px 150px 0px 150px;
-  height: 750px;
+  height: 200px;
   display: flex;
   flex-direction: column;
 }
@@ -69,13 +69,8 @@ html {
 }
 
 .recipes {
-<<<<<<< HEAD
   background-color: brown;
-=======
-  background-color: white;
->>>>>>> d35a9ead2c05090be48ef20546cd3683a939feb9
   width: 0 auto;
-  height: 600px;
 }
 
 .post1 {

@@ -13,9 +13,9 @@
       <h1>Welcome to MEX: The best recipe sharing website</h1>
       <br>
     <!--  <h2 class='spacer'> The best recipe sharing website</h2> -->
-      <a class="navlinks" href="/myhome">Home</a>
-      <a class="navlinks" href="/mypost">Post</a>
+      <a class="navlinks" href="/home">Home</a>
       <a class="navlinks" href="/aboutus">About Us</a>
+      <a class="navlinks" href="/post">Post</a>
       <a class="navlinks" href="/myprofile">Profile</a>
       <a class="navlinks" href="/myfeed">Feed</a>
         <a class="navlinks" href="{{logout_url}}">Sign out</a>
@@ -27,7 +27,8 @@
     <form method = "post">
         <h1> Add a new recipe </h1>
         <p>Recipe Title:
-        <input type="text" name="recipe_title"/>
+          <textarea name="recipe_title" rows="1" cols="25"/>
+          </textarea>
         <p>Recipe Description:
           <br>
           <textarea name="recipe_description" rows="8" cols="50"/>
