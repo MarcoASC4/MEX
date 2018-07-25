@@ -57,7 +57,7 @@ class PostHandler(webapp2.RequestHandler):
         if(user):
             userquery=User.query(User.username==user.nickname()).fetch()
             if(len(userquery)==0):
-                usertest=User(username=user.nickname(), recipe=[])
+                usertest=User(username=user.nickname(), recipes=[])
                 key=usertest.put()
                 print key
                 print user
