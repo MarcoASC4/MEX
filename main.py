@@ -32,7 +32,7 @@ class MainHandler(webapp2.RequestHandler):
             #if len(userquery)==0:
 
         else:
-            login_url = users.create_login_url('/post')
+            login_url = users.create_login_url('/home')
             print ("logged out")
 
 
@@ -135,6 +135,27 @@ class AboutUsHandler(webapp2.RequestHandler):
         template = jinja_current_directory.get_template('templates/aboutus.html')
         self.response.write(template.render(template_vars))
 
+class MyHomeHandler(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+
+        #assign these to something so the python runs no matter what
+        logout_url = None
+
+        if user:
+            nickname = user.nickname()
+            logout_url = users.create_logout_url('/')
+            print nickname
+
+
+        template_vars = {
+            "user": user,
+            "logout_url": logout_url,
+            }
+        template = jinja_current_directory.get_template('templates/home.html')
+        self.response.write(template.render(template_vars))
+
+
 class MyFeedHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
@@ -159,7 +180,6 @@ class MyProfileHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
 
-
         #assign these to something so the python runs no matter what
         logout_url = None
 
@@ -170,39 +190,27 @@ class MyProfileHandler(webapp2.RequestHandler):
             logout_url = users.create_logout_url('/')
             print nickname
 
+        get_back_recipes = Recipe.query(Recipe.owner==userproperty.key).fetch()
+        print get_back_recipes
 
-        name=self.request.get("recipe_title")
-        description=self.request.get("recipe_description")
-        ingredients=self.request.get("recipe_ingredients")
-        instructions=self.request.get("recipe_instructions")
+        retrieved_recipes=[]
 
-        recipe=Recipe(name=name,description=description,ingredients=ingredients,
-                instructions=instructions, owner=userproperty.key)
-        key=recipe.put()
-        print key
-
-
-        userproperty.recipes.append(key)
-        print(userproperty.recipes)
-        userproperty.put()
-
-
-        recipes_list = []
-        for key in userproperty.recipes:
-            recipes_list.append(key.get())
+        for recipe in get_back_recipes:
+            retrieved_recipes.append(recipe)
 
 
         template_vars = {
             "user": user,
             "logout_url": logout_url,
             "username": userproperty.username,
-            "recipes": recipes_list
+            "recipes": retrieved_recipes
             }
         template = jinja_current_directory.get_template('templates/myprofile.html')
         self.response.write(template.render(template_vars))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
+    ('/myhome', MyHomeHandler),
     ('/aboutus', AboutUsHandler),
     ('/post', PostHandler),
     ('/myfeed', MyFeedHandler),
