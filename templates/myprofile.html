@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="static/themes/myprofilestyle.css">
   </head>
-  <body>
+    <body>
     <div class='heady'>
       <h1>Welcome to MEX: The best recipe sharing website</h1>
 
@@ -15,9 +15,9 @@
       <a class="navlinks" href="/aboutus">About Us</a>
       <a class="navlinks" href="google.com">Profile</a>
       <a class="navlinks" href="google.com">Feed</a>
-      <br>
-        <a href="{{logout_url}}">Sign out</a>
+      <a class="navlinks" href="{{logout_url}}">Sign out</a>
     </div>
+
 
     <div class='profileHeader'>
       <div class='picetbio'>
@@ -26,6 +26,7 @@
         <p class='bio'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex in diam tempus molestie eu ac arcu. Morbi eget lorem erat. Maecenas vitae imperdiet ante. Quisque lobortis ac elit et ultricies. Curabitur vehicula dictum turpis, eget feugiat enim ornare sed. Etiam ullamcorper turpis lacus, vitae venenatis diam placerat vitae. Nunc vel dignissim felis. Aliquam pulvinar mauris urna, sit amet gravida leo vulputate in. Quisque aliquam, justo ut aliquet convallis, odio erat lacinia augue, eget iaculis nunc urna et purus. Vestibulum accumsan ornare odio, ac efficitur magna laoreet in. Proin dapibus, leo vitae aliquam accumsan, quam nulla fermentum lacus, sed malesuada nisi purus vitae elit. Vivamus ut hendrerit neque. Donec quis urna ac mi vulputate venenatis.
         </p>
+<<<<<<< HEAD
 
       </div>
       <div class='recipes'>
@@ -46,7 +47,23 @@
           </article>
         </article>
         </div>
+=======
+</div>
+>>>>>>> d35a9ead2c05090be48ef20546cd3683a939feb9
       </div>
+
+        {% for recipe in recipes %}
+        <div class='recipes'>
+        <h3>{{recipe.name}} by {{username}}</h3>
+        <p>Description: <br>{{recipe.description}}</p><br>
+        <p>Ingredients:<br>
+        {{recipe.ingredients}}</p><br>
+        <p>Instructions:<br>
+          {{recipe.instructions}}</p>
+          </div>
+        {% endfor %}
+
+
 
 
 
