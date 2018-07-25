@@ -1,8 +1,12 @@
 import jinja2
 import os
 import webapp2
+import datetime
+from pytz import timezone
 from google.appengine.api import users
 from google.appengine.ext import ndb
+
+
 
 
 
@@ -73,29 +77,35 @@ class PostHandler(webapp2.RequestHandler):
         description=self.request.get("recipe_description")
         ingredients=self.request.get("recipe_ingredients")
         instructions=self.request.get("recipe_instructions")
+        date_time=datetime.datetime.now()
+        #datetime_in_eastern=date_time.datetime.astimezone(timezone('US/Eastern'))
+        #date_time=datetime.datetime.now()
+        # printdatetime = date_time.strftime("%a, %b %d, - %Y %I:%M: %p ")
 
         user = users.get_current_user()
-        print user
+        #print user
 
         if(user):
             userproperty=User.query(User.username==user.nickname()).fetch()[0]
 
-        print userproperty
+        #print userproperty
 
         recipe=Recipe(name=name,description=description,ingredients=ingredients,
-                instructions=instructions, owner=userproperty.key)
+                instructions=instructions, owner=userproperty.key, datetime=date_time)
         key=recipe.put()
-        print key
+        #print key
 
 
         userproperty.recipes.append(key)
-        print(userproperty.recipes)
+        # print(userproperty.recipes)
         userproperty.put()
 
 
         recipes_list = []
         for key in userproperty.recipes:
             recipes_list.append(key.get())
+
+        print(recipes_list)
 
         #users_list = []
         #for userproperty.key in users:
@@ -165,13 +175,25 @@ class MyFeedHandler(webapp2.RequestHandler):
 
         if user:
             nickname = user.nickname()
+            userproperty=User.query(User.username==user.nickname()).fetch()[0]
             logout_url = users.create_logout_url('/')
             print nickname
+
+        get_back_all_recipes = Recipe.query().fetch()
+
+        print get_back_all_recipes
+
+        all_retrieved_recipes=[]
+
+        for recipe in get_back_all_recipes:
+            all_retrieved_recipes.append(recipe)
 
 
         template_vars = {
             "user": user,
             "logout_url": logout_url,
+            "username": userproperty.username,
+            "recipes": all_retrieved_recipes
             }
         template = jinja_current_directory.get_template('templates/myfeed.html')
         self.response.write(template.render(template_vars))
@@ -204,6 +226,7 @@ class MyProfileHandler(webapp2.RequestHandler):
             "user": user,
             "logout_url": logout_url,
             "username": userproperty.username,
+            "nickname": nickname,
             "recipes": retrieved_recipes
             }
         template = jinja_current_directory.get_template('templates/myprofile.html')
@@ -228,3 +251,4 @@ class Recipe(ndb.Model):
     ingredients=ndb.StringProperty()
     instructions=ndb.StringProperty()
     owner=ndb.KeyProperty(kind="User")
+    datetime=ndb.DateTimeProperty(auto_now=True)
