@@ -159,18 +159,44 @@ class MyProfileHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
 
+
         #assign these to something so the python runs no matter what
         logout_url = None
 
+
         if user:
             nickname = user.nickname()
+            userproperty=User.query(User.username==user.nickname()).fetch()[0]
             logout_url = users.create_logout_url('/')
             print nickname
+
+
+        name=self.request.get("recipe_title")
+        description=self.request.get("recipe_description")
+        ingredients=self.request.get("recipe_ingredients")
+        instructions=self.request.get("recipe_instructions")
+
+        recipe=Recipe(name=name,description=description,ingredients=ingredients,
+                instructions=instructions, owner=userproperty.key)
+        key=recipe.put()
+        print key
+
+
+        userproperty.recipes.append(key)
+        print(userproperty.recipes)
+        userproperty.put()
+
+
+        recipes_list = []
+        for key in userproperty.recipes:
+            recipes_list.append(key.get())
 
 
         template_vars = {
             "user": user,
             "logout_url": logout_url,
+            "username": userproperty.username,
+            "recipes": recipes_list
             }
         template = jinja_current_directory.get_template('templates/myprofile.html')
         self.response.write(template.render(template_vars))
