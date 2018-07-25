@@ -16,7 +16,7 @@
       <a class="navlinks" href="/aboutus">About Us</a>
       <a class="navlinks" href="/post">Post</a>
       <a class="navlinks" href="/myprofile">Profile</a>
-      <a class="navlinks" href="google.com">Feed</a>
+      <a class="navlinks" href="/myfeed">Feed</a>
       <a class="navlinks" href="{{logout_url}}">Sign out</a>
     </div>
 
@@ -24,17 +24,19 @@
     <div class='profileHeader'>
       <div class='picetbio'>
         <img class= 'pic' src='static/themes/food2.jpg'>
-        <h2 class='name'> Ulysses S. Grant</h2>
+        <h2 class='name'>{{nickname}}</h2>
         <p class='bio'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex in diam tempus molestie eu ac arcu. Morbi eget lorem erat. Maecenas vitae imperdiet ante. Quisque lobortis ac elit et ultricies. Curabitur vehicula dictum turpis, eget feugiat enim ornare sed. Etiam ullamcorper turpis lacus, vitae venenatis diam placerat vitae. Nunc vel dignissim felis. Aliquam pulvinar mauris urna, sit amet gravida leo vulputate in. Quisque aliquam, justo ut aliquet convallis, odio erat lacinia augue, eget iaculis nunc urna et purus. Vestibulum accumsan ornare odio, ac efficitur magna laoreet in. Proin dapibus, leo vitae aliquam accumsan, quam nulla fermentum lacus, sed malesuada nisi purus vitae elit. Vivamus ut hendrerit neque. Donec quis urna ac mi vulputate venenatis.
         </p>
     </div>
       </div>
       <div class='recipes'>
+
         {% for recipe in recipes %}
         <div>
         <article class='post1'>
-          <h2>{{recipe.name}} by {{username}}</h2>
+          <h2>{{recipe.name}} by {{username}}
+            </h2>
           <article class='subposts'>
             <h2> Recipe Description</h2>
             <p> {{recipe.description}}</p>
@@ -50,6 +52,7 @@
         </article>
         </div>
         {% endfor %}
+
       </div>
     </div>
 

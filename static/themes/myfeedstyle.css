@@ -11,9 +11,14 @@
 html, body {
   margin: 0;
   padding: 0;
+  color: #222;
+  background-color: rgba(255, 255, 255, 0.5);
   /* font-family: 'Helvetica', cursive; */
+}
 
->>>>>>> 222d18a36ed4d0e14075e7900cf0e8a6ad7ba8a0
+body {
+  font-family: 'Lato', sans-serif;
+
 }
 
 html {
@@ -28,4 +33,55 @@ html {
 /* Main axis is horizontal */
   justify-content: flex-end;
   font-size: 30px;
+}
+
+.profileHeader {
+  background-color: #ffdead;
+  margin: 0px 150px 0px 150px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.picetbio {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 0 auto;
+  height: 200px;
+}
+
+.picetbio * {
+
+}
+
+.pic {
+  width: 200px;
+  height: 175px;
+  margin:
+}
+
+.name {
+  width: 200px;
+  height: 175px;
+
+}
+
+.bio {
+  width: 700px;
+  height: 175px;
+  overflow: hidden;
+}
+
+.recipes {
+  background-color: ##FF884D;
+  width: 0 auto;
+}
+
+.post1 {
+  background-color: grey;
+}
+
+.subposts {
+  background-color: white;
 }
