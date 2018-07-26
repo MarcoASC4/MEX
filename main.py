@@ -61,6 +61,12 @@ class MainHandler(webapp2.RequestHandler):
 class PostHandler(webapp2.RequestHandler):
     def get(self):
         logout_url = users.create_logout_url('/')
+        user = users.get_current_user()
+        userproperty=User.query(User.username==user.nickname()).fetch()[0]
+
+        if userproperty.fullname is None:
+            self.redirect('/createprofile')
+
         template_vars = {
             "logout_url": logout_url,
         }
