@@ -8,6 +8,7 @@ import urllib
 from google.appengine.api import users
 from google.appengine.ext import ndb
 from google.appengine.api import images
+#from PIL import Image
 
 
 
@@ -126,6 +127,8 @@ class PostHandler(webapp2.RequestHandler):
             "username": userproperty.username,
             "recipes": recipes_list,
             "nickname": nickname,
+            "fullname": userproperty.fullname,
+            "bio": userproperty.bio,
         }
 
         #count=0
