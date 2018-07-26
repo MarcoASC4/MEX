@@ -1,5 +1,5 @@
 .heady {
-  background-color: #ff1919;
+  background-color: rgba(255,25,25,.89999);
   height: 80px;
   display: flex;
   justify-content: space-evenly;
@@ -36,7 +36,7 @@ html {
 }
 
 .profileHeader {
-  background-color: #FFE066;
+  background-color: rgba(255,224,102,.89999);
   margin: 0px 150px 0px 150px;
   height: 200px;
   display: flex;
@@ -73,7 +73,7 @@ html {
   overflow: hidden;
 }
 
-.recipes * 
+.recipes *
 }
 
 .recipes {
@@ -84,11 +84,11 @@ html {
 }
 
 .post1 {
-  background-color: #FF1919;
+  background-color: rgba(255,224,102,.89999);
   margin: 0px 150px 0px 150px;
 }
 
 .subposts {
-  background-color: #FFE066;
+  background-color: rgba(255,224,102,.1);
 
 }
