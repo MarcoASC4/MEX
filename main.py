@@ -2,9 +2,12 @@ import jinja2
 import os
 import webapp2
 from datetime import datetime
+import cgi
+import urllib
 #from pytz import timezone
 from google.appengine.api import users
 from google.appengine.ext import ndb
+from google.appengine.api import images
 
 
 
@@ -27,10 +30,11 @@ class MainHandler(webapp2.RequestHandler):
 
         if user:
             nickname = user.nickname()
-            logout_url = users.create_logout_url('/')
+            #logout_url = users.create_logout_url('/')
             #userquery=User.query(User.username==nickname).fetch()
             #print "query::::"
             #print userquery
+            self.redirect('/myhome')
 
             print("logged in")
             #if len(userquery)==0:
@@ -47,8 +51,11 @@ class MainHandler(webapp2.RequestHandler):
             "login_url": login_url,
         }
 
+
         template = jinja_current_directory.get_template('templates/skeleton.html')
         self.response.write(template.render(template_vars))
+
+
 
 class PostHandler(webapp2.RequestHandler):
     def get(self):
@@ -56,19 +63,6 @@ class PostHandler(webapp2.RequestHandler):
         template_vars = {
             "logout_url": logout_url,
         }
-
-        user = users.get_current_user()
-        if(user):
-            userquery=User.query(User.username==user.nickname()).fetch()
-            if(len(userquery)==0):
-                usertest=User(username=user.nickname(), recipes=[])
-                key=usertest.put()
-                print key
-                print user
-                print
-                print
-                print
-
         template = jinja_current_directory.get_template('templates/post.html')
         self.response.write(template.render(template_vars))
 
@@ -100,8 +94,10 @@ class PostHandler(webapp2.RequestHandler):
 
         #print userproperty
 
+        pic = self.request.get("fileupload")
         recipe=Recipe(name=name,description=description,ingredients=ingredients,
-                instructions=instructions, owner=userproperty.key, datetime=datetime.now())
+                instructions=instructions, owner=userproperty.key, datetime=datetime.now(),
+                picture=images.resize(pic,50,50))
         key=recipe.put()
         #print key
 
@@ -157,6 +153,13 @@ class AboutUsHandler(webapp2.RequestHandler):
             "user": user,
             "logout_url": logout_url,
             }
+
+        x = Recipe.query().fetch()
+        print "ouioui"
+        for item in x:
+            self.response.out.write('<div><img src="/img?img_id=%s"></img>' %
+                                            item.key.urlsafe())
+
         template = jinja_current_directory.get_template('templates/aboutus.html')
         self.response.write(template.render(template_vars))
 
@@ -220,8 +223,6 @@ class MyFeedHandler(webapp2.RequestHandler):
 class MyProfileHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-
-        #assign these to something so the python runs no matter what
         logout_url = None
 
 
@@ -251,13 +252,26 @@ class MyProfileHandler(webapp2.RequestHandler):
         template = jinja_current_directory.get_template('templates/myprofile.html')
         self.response.write(template.render(template_vars))
 
+
+
+class Image(webapp2.RequestHandler):
+    def get(self):
+        greeting_key = ndb.Key(urlsafe=self.request.get('img_id'))
+        greeting = greeting_key.get()
+        if greeting.picture:
+            self.response.headers['Content-Type'] = 'image/png'
+            self.response.out.write(greeting.picture)
+        else:
+            self.response.out.write('No image')
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/myhome', MyHomeHandler),
     ('/aboutus', AboutUsHandler),
     ('/post', PostHandler),
     ('/myfeed', MyFeedHandler),
-    ('/myprofile', MyProfileHandler)
+    ('/myprofile', MyProfileHandler),
+    ('/img',Image)
 ], debug=True)
 
 class User(ndb.Model):
@@ -271,3 +285,4 @@ class Recipe(ndb.Model):
     instructions=ndb.StringProperty()
     owner=ndb.KeyProperty(kind="User")
     datetime=ndb.DateTimeProperty(auto_now=True)
+    picture=ndb.BlobProperty()
