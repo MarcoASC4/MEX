@@ -146,7 +146,11 @@ class MyHomeHandler(webapp2.RequestHandler):
             nickname = user.nickname()
             logout_url = users.create_logout_url('/')
             print nickname
-
+            if(user):
+                userquery=User.query(User.username==user.nickname()).fetch()
+                if(len(userquery)==0):
+                    usertest=User(username=user.nickname(), recipes=[])
+                    key=usertest.put()
 
         template_vars = {
             "user": user,
