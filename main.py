@@ -239,12 +239,14 @@ class MyProfileHandler(webapp2.RequestHandler):
         user = users.get_current_user()
         logout_url = None
 
-
         if user:
             nickname = user.nickname()
             userproperty=User.query(User.username==user.nickname()).fetch()[0]
             logout_url = users.create_logout_url('/')
             print nickname
+
+        if userproperty.fullname is None:
+            self.redirect('/createprofile')
 
         get_back_user_recipes = Recipe.query(Recipe.owner==userproperty.key).fetch()
 
