@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Lato|Shadows+Into+Light" rel="stylesheet">
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="static/themes/explorestyle.css">
+  </head>
+
+    <header>
+    <div class='heady'>
+      <h1>Welcome to MEX: The best recipe sharing website</h1>
+      <br>
+    <!--  <h2 class='spacer'> The best recipe sharing website</h2> -->
+      <a class="navlinks" href="/myhome">Home</a>
+      <a class="navlinks" href="/aboutus">About Us</a>
+      <a class="navlinks" href="/post">Post</a>
+      <a class="navlinks" href="/myprofile">Profile</a>
+      <a class="navlinks" href="/myfeed">Feed</a>
+        <a class="navlinks" href="{{logout_url}}">Sign out</a>
+      </div>
+    </header>
+    </div>
+    <body>
+      {% for user in users_list %}
+      <div class="profileHeader">
+        <article class='picetbio'>
+          <!-- <img class= 'pic' src='static/themes/food2.jpg'> -->
+          <h2 class='name'>{{user.fullname}}</h2>
+          <p class='bio'>
+            {{user.bio}}
+          <!--  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex in diam tempus molestie eu ac arcu. Morbi eget lorem erat. Maecenas vitae imperdiet ante. Quisque lobortis ac elit et ultricies. Curabitur vehicula dictum turpis, eget feugiat enim ornare sed. Etiam ullamcorper turpis lacus, vitae venenatis diam placerat vitae. Nunc vel dignissim felis. Aliquam pulvinar mauris urna, sit amet gravida leo vulputate in. Quisque aliquam, justo ut aliquet convallis, odio erat lacinia augue, eget iaculis nunc urna et purus. Vestibulum accumsan ornare odio, ac efficitur magna laoreet in. Proin dapibus, leo vitae aliquam accumsan, quam nulla fermentum lacus, sed malesuada nisi purus vitae elit. Vivamus ut hendrerit neque. Donec quis urna ac mi vulputate venenatis.
+          --> </p>
+          <br>
+          <br>
+      </article>
+    </div>
+      {% endfor %}
+
+
+  </body>
+</html>

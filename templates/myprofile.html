@@ -32,7 +32,7 @@
     </div>
       </div>
       <div class='recipes'>
-
+        {% set count=0%}
         {% for recipe in recipes %}
         <div>
         <article class='post1'>
@@ -50,8 +50,12 @@
             <h2> Recipe Instructions</h2>
             <p>{{recipe.instructions}}</p>
           </article>
+          <article class='subposts'>
+            <div><img src="/img?img_id={{urls[count]}}"></img></div>
+          </article>
         </article>
         </div>
+        {% set count=count+1%}
         {% endfor %}
 
       </div>
