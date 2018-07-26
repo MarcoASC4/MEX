@@ -14,12 +14,19 @@
       <br>
     <!--  <h2 class='spacer'> The best recipe sharing website</h2> -->
     {% if user %}
+    {% if profile %}
     <a class="navlinks" href="/myhome">Home</a>
     <a class="navlinks" href="/aboutus">About Us</a>
     <a class="navlinks" href="/post">Post</a>
       <a class="navlinks" href="/myprofile">Profile</a>
       <a class="navlinks" href="/myfeed">Feed</a>
         <a class="navlinks" href="{{logout_url}}">Sign out</a>
+    {% else %}
+    <a class="navlinks" href="/myhome">Home</a>
+    <a class="navlinks" href="/aboutus">About Us</a>
+    <a class="navlinks" href="/post">Create Profile</a>
+        <a class="navlinks" href="{{logout_url}}">Sign out</a>
+    {% endif %}
     {% else %}
       <a class="navlinks" href="/">Back to Homepage</a>
     {% endif %}

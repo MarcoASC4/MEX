@@ -152,6 +152,8 @@ class PostHandler(webapp2.RequestHandler):
 class AboutUsHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
+        userproperty=User.query(User.username==user.nickname()).fetch()[0]
+
 
         #assign these to something so the python runs no matter what
         logout_url = None
@@ -161,9 +163,12 @@ class AboutUsHandler(webapp2.RequestHandler):
             logout_url = users.create_logout_url('/')
             print nickname
 
+
+
         template_vars = {
             "user": user,
             "logout_url": logout_url,
+            "profile": userproperty.fullname,
             #"urls":image_url
             }
 
@@ -174,8 +179,10 @@ class MyHomeHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
 
+
         #assign these to something so the python runs no matter what
         logout_url = None
+
         if(user):
             userquery=User.query(User.username==user.nickname()).fetch()
             if(len(userquery)==0):
@@ -183,11 +190,14 @@ class MyHomeHandler(webapp2.RequestHandler):
                 key=usertest.put()
             nickname = user.nickname()
             logout_url = users.create_logout_url('/')
-            print nickname
+            #print nickname
+        #userproperty=User.query(User.username==user.nickname()).fetch()[0]
+
 
         template_vars = {
             "user": user,
             "logout_url": logout_url,
+            #"profile": userquery.fullname,
             }
         template = jinja_current_directory.get_template('templates/home.html')
         self.response.write(template.render(template_vars))
@@ -208,23 +218,27 @@ class MyFeedHandler(webapp2.RequestHandler):
 
         get_back_all_recipes = Recipe.query().fetch()
 
-        print get_back_all_recipes
+        #print get_back_all_recipes
 
         all_retrieved_recipes=[]
         owners=[]
 
+
         for recipe in get_back_all_recipes:
             all_retrieved_recipes.append(recipe)
+            print ("testing2")
+            print (recipe.owner)
             #owners.append(recipe.owner)
             owners.append(User.query(User.key==recipe.owner).fetch()[0])
 
+        print owners
             #name_key = recipe.owner.get()
             #recipe_maker = name_key.fullname
         #for recipe in get_back_all_recipes:
         #    username = recipe.owner
-        print "testing"
-        print all_retrieved_recipes
-        print owners
+        #print "testing"
+        #print all_retrieved_recipes
+        #print owners
 
         template_vars = {
             "user": user,
@@ -296,17 +310,24 @@ class Image(webapp2.RequestHandler):
 
 class CreateProfileHandler(webapp2.RequestHandler):
     def get(self):
+        user = users.get_current_user()
         logout_url = users.create_logout_url('/')
+
+        if user:
+            nickname = user.nickname()
+            userproperty=User.query(User.username==user.nickname()).fetch()[0]
+            logout_url = users.create_logout_url('/')
+        #if(user):
+        #    nickname = user.nickname()
+        #    userquery=User.query(User.username==user.nickname()).fetch()
+        #    if(len(userquery)==0):
+        #        usertest=User(username=user.nickname(), recipes=[])
+        #        user=usertest.put()
+
         template_vars = {
             "logout_url": logout_url,
+            "profile": userproperty.fullname,
         }
-
-        user = users.get_current_user()
-        if(user):
-            userquery=User.query(User.username==user.nickname()).fetch()
-            if(len(userquery)==0):
-                usertest=User(username=user.nickname(), recipes=[])
-                key=usertest.put()
 
         template = jinja_current_directory.get_template('templates/createprofile.html')
         self.response.write(template.render(template_vars))
