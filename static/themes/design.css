@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  border: 2px rgba(2,2,2,.5) solid;
 }
 
 #about_us_link {

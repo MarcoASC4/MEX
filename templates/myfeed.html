@@ -11,12 +11,12 @@
   <body>
     <div class='heady'>
       <h1>Welcome to MEX: The best recipe sharing website</h1>
-      <a class="navlinks" href="/myhome">Home</a>
-      <a class="navlinks" href="/aboutus">About Us</a>
-      <a class="navlinks" href="/post">Post</a>
-      <a class="navlinks" href="/myprofile">Profile</a>
-      <a class="navlinks" href="/myfeed">Feed</a>
-        <a class="navlinks" href="{{logout_url}}">Sign out</a>
+      <a href="/myhome"><button class="navlinks">Home</button></a>
+      <a href="/aboutus"><button class="navlinks">About Us</button></a>
+      <a href="/post"><button class="navlinks">Post</button></a>
+      <a href="/myprofile"><button class="navlinks">Profile</button></a>
+      <a href="/myfeed"><button class="navlinks">Feed</button></a>
+      <a href="{{logout_url}}"><button class="navlinks">Sign Out</button></a>
       </div>
     </div>
     <div class='recipes'>
@@ -25,15 +25,15 @@
       <div>
       <article class='post1'>
         <h2>{{recipe.name}} by {{owner[count].fullname}}</h2>
-        <article class='subposts'>
+        <article  id='removebot' class='subposts'>
           <h2> Recipe Description</h2>
           <p> {{recipe.description}}</p>
         </article>
-        <article class='subposts'>
+        <article id='removebot' class='subposts'>
           <h2> Recipe Ingredients</h2>
           <p>{{recipe.ingredients}}</p>
         </article>
-        <article class='subposts'>
+        <article id='removebot' class='subposts'>
           <h2> Recipe Instructions</h2>
           <p>{{recipe.instructions}}</p>
         </article>
