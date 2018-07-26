@@ -236,6 +236,9 @@ class MyProfileHandler(webapp2.RequestHandler):
         for recipe in get_back_user_recipes:
             retrieved_recipes.append(recipe)
 
+        #userfull = userproperty.key.get()
+        #get_back_user_fullname = userfull.query(userfull.fullname==userproperty.key).fetch()
+
 
         template_vars = {
             "user": user,
@@ -247,17 +250,74 @@ class MyProfileHandler(webapp2.RequestHandler):
         template = jinja_current_directory.get_template('templates/myprofile.html')
         self.response.write(template.render(template_vars))
 
+class CreateProfileHandler(webapp2.RequestHandler):
+    def get(self):
+        logout_url = users.create_logout_url('/')
+        template_vars = {
+            "logout_url": logout_url,
+        }
+
+        user = users.get_current_user()
+        if(user):
+            userquery=User.query(User.username==user.nickname()).fetch()
+            if(len(userquery)==0):
+                usertest=User(username=user.nickname(), recipes=[])
+                key=usertest.put()
+                print key
+                print user
+                print
+                print
+                print
+
+        template = jinja_current_directory.get_template('templates/createprofile.html')
+        self.response.write(template.render(template_vars))
+
+    def post(self):
+        user = users.get_current_user()
+
+        #assign these to something so the python runs no matter what
+        logout_url = None
+
+
+        if user:
+            nickname = user.nickname()
+            userproperty=User.query(User.username==user.nickname()).fetch()[0]
+            logout_url = users.create_logout_url('/')
+            print nickname
+
+        fullname = self.request.get("full_name")
+        bio = self.request.get("bio")
+
+        #userfull = userproperty.key.get()
+        userproperty.fullname = fullname
+        userproperty.bio = bio
+        userproperty.put()
+
+        template_vars = {
+            "user": user,
+            "logout_url": logout_url,
+            "fullname": userproperty.fullname,
+            "bio": userproperty.bio,
+        }
+
+        template = jinja_current_directory.get_template('templates/myprofile.html')
+        self.response.write(template.render(template_vars))
+
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/myhome', MyHomeHandler),
     ('/aboutus', AboutUsHandler),
     ('/post', PostHandler),
     ('/myfeed', MyFeedHandler),
-    ('/myprofile', MyProfileHandler)
+    ('/myprofile', MyProfileHandler),
+    ('/createprofile', CreateProfileHandler),
 ], debug=True)
 
 class User(ndb.Model):
     username=ndb.StringProperty()
+    fullname=ndb.StringProperty()
+    bio=ndb.TextProperty()
     recipes=ndb.KeyProperty(kind="Recipe", repeated=True)
 
 class Recipe(ndb.Model):
