@@ -110,10 +110,11 @@ class PostHandler(webapp2.RequestHandler):
         # print(userproperty.recipes)
         userproperty.put()
 
-
+        image_url=[]
         recipes_list = []
         for key in userproperty.recipes:
             recipes_list.append(key.get())
+            image_url.append(recipe.key.urlsafe())
 
         #print(recipes_list)
 
@@ -132,13 +133,15 @@ class PostHandler(webapp2.RequestHandler):
             "nickname": nickname,
             "fullname": userproperty.fullname,
             "bio": userproperty.bio,
+            "urls": image_url,
         }
 
         #count=0
         #print userproperty.recipe.name
         #userproperty.recipe.append(key).put()
-        template = jinja_current_directory.get_template('templates/myprofile.html')
-        self.response.write(template.render(template_vars))
+        #template = jinja_current_directory.get_template('templates/myprofile.html')
+        #self.response.write(template.render(template_vars))
+        self.redirect('/myprofile')
     #    for x,y in template_vars.items():
     #        print (x,y)
 
@@ -154,17 +157,11 @@ class AboutUsHandler(webapp2.RequestHandler):
             logout_url = users.create_logout_url('/')
             print nickname
 
-
         template_vars = {
             "user": user,
             "logout_url": logout_url,
+            #"urls":image_url
             }
-
-        x = Recipe.query().fetch()
-        print "ouioui"
-        for item in x:
-            self.response.out.write('<div><img src="/img?img_id=%s"></img>' %
-                                            item.key.urlsafe())
 
         template = jinja_current_directory.get_template('templates/aboutus.html')
         self.response.write(template.render(template_vars))
@@ -254,11 +251,18 @@ class MyProfileHandler(webapp2.RequestHandler):
         print get_back_user_recipes
 
         retrieved_recipes=[]
+        image_url=[]
 
         for recipe in get_back_user_recipes:
             retrieved_recipes.append(recipe)
+            image_url.append(recipe.key.urlsafe())
 
         #userfull = userproperty.key.get()
+
+        print "neeraj"
+        print image_url
+
+
 
 
         template_vars = {
@@ -269,6 +273,7 @@ class MyProfileHandler(webapp2.RequestHandler):
             "recipes": retrieved_recipes,
             "fullname": userproperty.fullname,
             "bio": userproperty.bio,
+            "urls": image_url,
             }
         template = jinja_current_directory.get_template('templates/myprofile.html')
         self.response.write(template.render(template_vars))
@@ -333,9 +338,13 @@ class CreateProfileHandler(webapp2.RequestHandler):
         print get_back_user_recipes
 
         retrieved_recipes=[]
+        image_url=[]
 
         for recipe in get_back_user_recipes:
             retrieved_recipes.append(recipe)
+            image_url.append(recipe.key.urlsafe())
+
+
 
 
         #profile = User(username=nickname, fullname = self.request.get("full_name"), bio = self.request.get("bio"), recipes=retrieved_recipes)
@@ -351,9 +360,9 @@ class CreateProfileHandler(webapp2.RequestHandler):
             "user": user,
             "logout_url": logout_url,
             "recipes": retrieved_recipes,
-            #"profile": profile,
-            "fullname": fullname, #userproperty.fullname,
-            "bio": bio, #userproperty.bio,
+            "fullname": fullname,
+            "bio": bio,
+            "urls": image_url,
         }
 
         template = jinja_current_directory.get_template('templates/myprofile.html')
