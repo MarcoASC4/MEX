@@ -18,6 +18,27 @@
         <a class="navlinks" href="{{logout_url}}">Sign out</a>
       </div>
     </div>
+    <div class='recipes'>
+      {% for recipe in recipes %}
+      <div>
+      <article class='post1'>
+        <h2>{{recipe.name}} by {{username}}</h2>
+        <article class='subposts'>
+          <h2> Recipe Description</h2>
+          <p> {{recipe.description}}</p>
+        </article>
+        <article class='subposts'>
+          <h2> Recipe Ingredients</h2>
+          <p>{{recipe.ingredients}}</p>
+        </article>
+        <article class='subposts'>
+          <h2> Recipe Instructions</h2>
+          <p>{{recipe.instructions}}</p>
+        </article>
+      </article>
+      </div>
+      {% endfor %}
+    </div>
   </header>
   <body>
 
