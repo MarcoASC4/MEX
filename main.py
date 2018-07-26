@@ -106,15 +106,21 @@ class PostHandler(webapp2.RequestHandler):
         #print key
 
 
+
         userproperty.recipes.append(key)
         # print(userproperty.recipes)
         userproperty.put()
+        get_back_user_recipes = Recipe.query(Recipe.owner==userproperty.key).fetch()
 
+        print get_back_user_recipes
+
+        retrieved_recipes=[]
         image_url=[]
-        recipes_list = []
-        for key in userproperty.recipes:
-            recipes_list.append(key.get())
+
+        for recipe in get_back_user_recipes:
+            retrieved_recipes.append(recipe)
             image_url.append(recipe.key.urlsafe())
+
 
         #print(recipes_list)
 
@@ -122,14 +128,14 @@ class PostHandler(webapp2.RequestHandler):
         #for userproperty.key in users:
         #    users_list.append(userproperty.key.get())
 
-        print recipes_list
+        #print recipes_list
 
 
         #print recipes_list.sort(key=lambda r: r.datetime)
 
         template_vars={
             "username": userproperty.username,
-            "recipes": recipes_list,
+            "recipes": retrieved_recipes,
             "nickname": nickname,
             "fullname": userproperty.fullname,
             "bio": userproperty.bio,
