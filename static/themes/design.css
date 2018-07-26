@@ -1,5 +1,5 @@
 .heady {
-  background-color: #ff1919;
+  background-color: rgba(255,25,25,.89999);
   height: 80px;
   display: flex;
   justify-content: space-evenly;
@@ -23,7 +23,7 @@
     transform: translate(-50%, -50%);
     height: 200px;
     width: 200px;
-    background-color: #ff1919;
+    background-color: rgba(255,25,25,.89999);
     border-radius: 100px;
 
 }
@@ -51,7 +51,22 @@ html, body {
   padding: 0;
   font-family: 'Shadows Into Light', cursive;
   font-size: 20px;
-
-#about_us_link {
-
 }
+
+.corsage {
+  background-color: rgba(255,25,25,.89999);
+  font-family: 'Shadows Into Light', cursive;
+  border: rgba(2,2,2,.5) solid;
+  color: rgb(2,2,2)
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 22px;
+}
+.corsage:hover {opacity: 1}
