@@ -57,17 +57,7 @@ class PostHandler(webapp2.RequestHandler):
             "logout_url": logout_url,
         }
 
-        user = users.get_current_user()
-        if(user):
-            userquery=User.query(User.username==user.nickname()).fetch()
-            if(len(userquery)==0):
-                usertest=User(username=user.nickname(), recipes=[])
-                key=usertest.put()
-                print key
-                print user
-                print
-                print
-                print
+
 
         template = jinja_current_directory.get_template('templates/post.html')
         self.response.write(template.render(template_vars))
@@ -166,8 +156,11 @@ class MyHomeHandler(webapp2.RequestHandler):
 
         #assign these to something so the python runs no matter what
         logout_url = None
-
-        if user:
+        if(user):
+            userquery=User.query(User.username==user.nickname()).fetch()
+            if(len(userquery)==0):
+                usertest=User(username=user.nickname(), recipes=[])
+                key=usertest.put()
             nickname = user.nickname()
             logout_url = users.create_logout_url('/')
             print nickname
@@ -236,8 +229,8 @@ class MyProfileHandler(webapp2.RequestHandler):
         for recipe in get_back_user_recipes:
             retrieved_recipes.append(recipe)
 
-        #userfull = userproperty.key.get()
-        #get_back_user_fullname = userfull.query(userfull.fullname==userproperty.key).fetch()
+        userfull = userproperty.key.get()
+        get_back_user_fullname = userfull.query(userfull.fullname==userproperty.key).fetch()
 
 
         template_vars = {
