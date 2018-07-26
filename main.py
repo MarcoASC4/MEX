@@ -29,7 +29,6 @@ class MainHandler(webapp2.RequestHandler):
 
 
         if user:
-<<<<<<< HEAD
             nickname = user.nickname()
             #logout_url = users.create_logout_url('/')
             #userquery=User.query(User.username==nickname).fetch()
