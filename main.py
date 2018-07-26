@@ -309,6 +309,8 @@ class CreateProfileHandler(webapp2.RequestHandler):
 
     def post(self):
         user = users.get_current_user()
+        fullname = self.request.get("full_name")
+        bio = self.request.get("bio")
 
         #assign these to something so the python runs no matter what
         logout_url = None
@@ -320,13 +322,16 @@ class CreateProfileHandler(webapp2.RequestHandler):
             logout_url = users.create_logout_url('/')
             print nickname
 
-        fullname = self.request.get("full_name")
-        bio = self.request.get("bio")
 
-        #userfull = userproperty.key.get()
-        userproperty.fullname = fullname
-        userproperty.bio = bio
-        userproperty.put()
+        #fullname = self.request.get("full_name")
+        #bio = self.request.get("bio")
+
+        userfull = userproperty.key.get()
+        userfull.fullname = fullname
+        userfull.bio = bio
+        userfull.put()
+
+
 
         get_back_user_recipes = Recipe.query(Recipe.owner==userproperty.key).fetch()
 
@@ -341,17 +346,68 @@ class CreateProfileHandler(webapp2.RequestHandler):
 
 
 
+
+        #profile = User(username=nickname, fullname = self.request.get("full_name"), bio = self.request.get("bio"), recipes=retrieved_recipes)
+
+        #retrieved_profiles = User.query().fetch()
+
+        #profiles_list = []
+
+        #for profile in retrieved_profiles:
+        #    profiles_list.append(profile)
+
         template_vars = {
             "user": user,
             "logout_url": logout_url,
             "recipes": retrieved_recipes,
-            "fullname": userproperty.fullname,
-            "bio": userproperty.bio,
+            "fullname": fullname,
+            "bio": bio,
             "urls": image_url,
         }
 
         template = jinja_current_directory.get_template('templates/myprofile.html')
         self.response.write(template.render(template_vars))
+
+class ExploreHandler(webapp2.RequestHandler):
+    def get(self):
+        logout_url = users.create_logout_url('/')
+
+
+        user = users.get_current_user()
+
+        if(user):
+            userquery=User.query(User.username==user.nickname()).fetch()
+            if(len(userquery)==0):
+                usertest=User(username=user.nickname(), recipes=[])
+                key=usertest.put()
+            userproperty=User.query(User.username==user.nickname()).fetch()[0]
+
+
+
+        if userproperty.fullname is None:
+            self.redirect('/createprofile')
+
+        get_all_users = User.query().fetch()
+            #print get_all_users
+
+        users_list = []
+
+        for user in get_all_users:
+            users_list.append(user)
+            print "TESTING"
+        #print users_list
+
+        #for user in users_list:
+        #    print user.fullname
+
+        template_vars = {
+            "logout_url": logout_url,
+            "users_list": users_list,
+        }
+
+        template = jinja_current_directory.get_template('templates/explore.html')
+        self.response.write(template.render(template_vars))
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
@@ -362,6 +418,7 @@ app = webapp2.WSGIApplication([
     ('/myprofile', MyProfileHandler),
     ('/img',Image),
     ('/createprofile', CreateProfileHandler),
+    ('/explore', ExploreHandler),
 
 ], debug=True)
 

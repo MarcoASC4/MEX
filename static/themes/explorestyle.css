@@ -1,0 +1,87 @@
+.heady {
+  background-color: #ff1919;
+  height: 80px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  /* color: #333; */
+  /* font-family: 'Helvetica', cursive; */
+
+>>>>>>> 222d18a36ed4d0e14075e7900cf0e8a6ad7ba8a0
+}
+
+body {
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 100vh;
+  font-family: 'Lato', sans-serif;
+
+  }
+html {
+  background: url(food.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.profileHeader {
+  background-color: rgba(255,224,102,.89999);
+  margin: 0px 150px 0px 150px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.picetbio {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 0 auto;
+  height: 200px;
+}
+
+.picetbio * {
+
+}
+
+.heady .navlinks {
+/* Main axis is horizontal */
+  justify-content: flex-end;
+  font-size: 30px;
+}
+
+
+.add_recipe {
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+/* Main axis is horizontal */
+
+}
+
+h1 {
+  font-size: 40px;
+}
+form {
+    width: 500px;
+    font-size: 30px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+button {
+  height: 50px;
+  width: 70px;
+  font-size: 20px;
+}
