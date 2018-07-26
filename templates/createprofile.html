@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title></title>
 
-    <link rel="stylesheet" href="static/themes/poststyle.css">
+    <link rel="stylesheet" href="static/themes/createprofile.css">
   </head>
 
     <header>
@@ -24,26 +24,18 @@
     </div>
     <body>
     <div class="add_recipe">
-    <form method = "post" action="/post" enctype="multipart/form-data">
-        <h1> Add a new recipe </h1>
-        <p>Recipe Title:
-          <textarea name="recipe_title" rows="1" cols="25"/>
+    <form method = "post">
+        <h1> Create your profile: </h1>
+        <p>Full Name:
+          <textarea name="full_name" rows="1" cols="25"/>
           </textarea>
-        <p>Recipe Description:
+        <p>Bio:
           <br>
-          <textarea name="recipe_description" rows="8" cols="50"/>
+          <textarea name="bio" rows="8" cols="50"/>
           </textarea>
-        <p>Ingredients:
+        <p>Upload a profile picture:
           <br>
-        <textarea name="recipe_ingredients" rows="10" cols="50"/>
-        </textarea>
-        <p>Recipe instructions:
-          <br>
-        <textarea name="recipe_instructions" rows="20" cols="50"/>
-        </textarea>
-        <p>Add a photo of your food:
-          <br>
-          <input type="file" name="fileupload" value="fileupload" id="fileupload">
+          <input type="file" name="profile_picture" value="fileupload" id="fileupload">
           <br>
           <br>
           <!-- <label for="fileupload"> Select a file to upload</label> -->
@@ -51,6 +43,8 @@
         <button type="submit">Post</button>
       </div>
     </form>
+
+
 
   </body>
 </html>

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="static/themes/myfeedstyle.css">
   </head>
   <header>
+  <body>
     <div class='heady'>
       <h1>Welcome to MEX: The best recipe sharing website</h1>
       <a class="navlinks" href="/myhome">Home</a>
@@ -19,10 +20,11 @@
       </div>
     </div>
     <div class='recipes'>
+      {% set count=0%}
       {% for recipe in recipes %}
       <div>
       <article class='post1'>
-        <h2>{{recipe.name}} by {{username}}</h2>
+        <h2>{{recipe.name}} by {{owner[count].fullname}}</h2>
         <article class='subposts'>
           <h2> Recipe Description</h2>
           <p> {{recipe.description}}</p>
@@ -37,10 +39,12 @@
         </article>
       </article>
       </div>
+      {% set count=count+1%}
       {% endfor %}
+
     </div>
   </header>
-  <body>
+
 
 
   </body>
