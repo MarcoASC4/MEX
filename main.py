@@ -8,6 +8,7 @@ import urllib
 from google.appengine.api import users
 from google.appengine.ext import ndb
 from google.appengine.api import images
+#from PIL import Image
 
 
 
@@ -29,7 +30,6 @@ class MainHandler(webapp2.RequestHandler):
 
 
         if user:
-<<<<<<< HEAD
             nickname = user.nickname()
             #logout_url = users.create_logout_url('/')
             #userquery=User.query(User.username==nickname).fetch()
@@ -127,6 +127,8 @@ class PostHandler(webapp2.RequestHandler):
             "username": userproperty.username,
             "recipes": recipes_list,
             "nickname": nickname,
+            "fullname": userproperty.fullname,
+            "bio": userproperty.bio,
         }
 
         #count=0
