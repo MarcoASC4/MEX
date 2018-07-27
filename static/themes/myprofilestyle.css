@@ -40,6 +40,7 @@ html {
 .profileHeader {
   background-color: rgba(255,224,102,.89999);
   margin: 0px 150px 0px 150px;
+  border: purple solid;
   height: 200px;
   display: flex;
   flex-direction: column;
