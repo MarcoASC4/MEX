@@ -93,6 +93,7 @@ html {
   margin: 10px 150px 10px 150px;
   border: 1px black solid;
   text-indent: 25px;
+  border-radius: 15px;
 }
 
 .subposts {
