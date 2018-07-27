@@ -243,9 +243,11 @@ class MyFeedHandler(webapp2.RequestHandler):
             all_retrieved_recipes.append(recipe)
             print ("testing2")
             image_url.append(recipe.key.urlsafe())
-            #print (recipe.owner)
+            print (recipe.owner)
             #owners.append(recipe.owner)
-            owners.append(User.query(User.key==recipe.owner).fetch()[0])
+            owner = recipe.owner.get()
+            print owner
+            owners.append(owner)
 
         print owners
             #name_key = recipe.owner.get()
