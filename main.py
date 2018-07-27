@@ -101,7 +101,7 @@ class PostHandler(webapp2.RequestHandler):
         pic = self.request.get("fileupload")
         recipe=Recipe(name=name,description=description,ingredients=ingredients,
                 instructions=instructions, owner=userproperty.key, datetime=datetime.now(),
-                picture=images.resize(pic,50,50))
+                picture=images.resize(pic,500,1000))
         key=recipe.put()
         #print key
 
@@ -232,11 +232,13 @@ class MyFeedHandler(webapp2.RequestHandler):
 
         all_retrieved_recipes=[]
         owners=[]
+        image_url=[]
 
 
         for recipe in get_back_all_recipes:
             all_retrieved_recipes.append(recipe)
             print ("testing2")
+            image_url.append(recipe.key.urlsafe())
             #print (recipe.owner)
             #owners.append(recipe.owner)
             owners.append(User.query(User.key==recipe.owner).fetch()[0])
@@ -256,6 +258,7 @@ class MyFeedHandler(webapp2.RequestHandler):
             "username": userproperty.username,
             "recipes": all_retrieved_recipes,
             "owner": owners,
+            "urls": image_url,
             }
 
         template = jinja_current_directory.get_template('templates/myfeed.html')
