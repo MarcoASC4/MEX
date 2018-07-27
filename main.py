@@ -112,17 +112,23 @@ class PostHandler(webapp2.RequestHandler):
         userproperty.put()
         get_back_user_recipes = Recipe.query(Recipe.owner==userproperty.key).fetch()
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> f005e6fed29dc63dce8670866b95b81940d9c945
         print get_back_user_recipes
 
         retrieved_recipes=[]
         image_url=[]
+<<<<<<< HEAD
+=======
 
         get_back_user_recipes=Recipe.query(Recipe.owner==userproperty.key).fetch()
 
         image_url=[]
         retrieved_recipes = []
 
+>>>>>>> f005e6fed29dc63dce8670866b95b81940d9c945
 
         for recipe in get_back_user_recipes:
             retrieved_recipes.append(recipe)
@@ -259,6 +265,7 @@ class MyFeedHandler(webapp2.RequestHandler):
             "recipes": all_retrieved_recipes,
             "owner": owners,
             }
+            
         template = jinja_current_directory.get_template('templates/myfeed.html')
         self.response.write(template.render(template_vars))
 
