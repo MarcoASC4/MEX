@@ -101,7 +101,7 @@ class PostHandler(webapp2.RequestHandler):
         pic = self.request.get("fileupload")
         recipe=Recipe(name=name,description=description,ingredients=ingredients,
                 instructions=instructions, owner=userproperty.key, datetime=datetime.now(),
-                picture=images.resize(pic,500,500))
+                picture=images.resize(pic,500,1000))
         key=recipe.put()
         #print key
 

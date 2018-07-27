@@ -1,5 +1,5 @@
 .heady {
-  background-color: #ff1919;
+  background-color: rgba(255,25,25,.89999);
   height: 80px;
   display: flex;
   justify-content: space-evenly;
@@ -15,8 +15,6 @@ html, body {
   padding: 0;
   /* color: #333; */
   /* font-family: 'Helvetica', cursive; */
-
->>>>>>> 222d18a36ed4d0e14075e7900cf0e8a6ad7ba8a0
 }
 
 body {
@@ -59,8 +57,27 @@ form {
 
 }
 
-button {
+#postbutton {
   height: 50px;
   width: 70px;
   font-size: 20px;
 }
+
+.navlinks {
+  background-color: rgba(255,25,25,.89999);
+  font-family: 'Shadows Into Light', cursive;
+  border: rgba(2,2,2,.8) solid;
+  color: rgb(2,2,2)
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 22px;
+}
+
+.navlinks:hover {opacity:1}
