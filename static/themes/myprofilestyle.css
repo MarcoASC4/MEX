@@ -45,6 +45,10 @@ html {
   flex-direction: column;
 }
 
+#profile_picture {
+
+}
+
 .picetbio {
   display: flex;
   justify-content: space-evenly;

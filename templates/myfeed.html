@@ -20,11 +20,11 @@
       </div>
     </div>
     <div class='recipes'>
-      {% set count=0%}
+      {% set count2=0%}
       {% for recipe in recipes %}
       <div>
       <article class='post1'>
-        <h2>{{recipe.name}} by {{owner[count].fullname}}</h2>
+        <h2>{{recipe.name}} by {{owner[count2].fullname}}</h2>
         <article  id='removebot' class='subposts'>
           <h2> Recipe Description</h2>
           <p> {{recipe.description}}</p>
@@ -39,7 +39,7 @@
         </article>
       </article>
       </div>
-      {% set count=count+1%}
+      {% set count2=count2+1%}
       {% endfor %}
 
     </div>

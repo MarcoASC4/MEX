@@ -112,18 +112,17 @@ class PostHandler(webapp2.RequestHandler):
         userproperty.put()
         get_back_user_recipes = Recipe.query(Recipe.owner==userproperty.key).fetch()
 
-<<<<<<< HEAD
+
         print get_back_user_recipes
 
         retrieved_recipes=[]
         image_url=[]
-=======
 
         get_back_user_recipes=Recipe.query(Recipe.owner==userproperty.key).fetch()
 
         image_url=[]
         retrieved_recipes = []
->>>>>>> 88aab92d7439edd01bcf90fccea10186f1f5ed51
+
 
         for recipe in get_back_user_recipes:
             retrieved_recipes.append(recipe)
@@ -226,6 +225,9 @@ class MyFeedHandler(webapp2.RequestHandler):
             logout_url = users.create_logout_url('/')
             print nickname
 
+        if userproperty.fullname is None:
+            self.redirect('/createprofile')
+
         get_back_all_recipes = Recipe.query().fetch()
 
         #print get_back_all_recipes
@@ -237,7 +239,7 @@ class MyFeedHandler(webapp2.RequestHandler):
         for recipe in get_back_all_recipes:
             all_retrieved_recipes.append(recipe)
             print ("testing2")
-            print (recipe.owner)
+            #print (recipe.owner)
             #owners.append(recipe.owner)
             owners.append(User.query(User.key==recipe.owner).fetch()[0])
 
@@ -255,7 +257,7 @@ class MyFeedHandler(webapp2.RequestHandler):
             "logout_url": logout_url,
             "username": userproperty.username,
             "recipes": all_retrieved_recipes,
-            "owner":owners
+            "owner": owners,
             }
         template = jinja_current_directory.get_template('templates/myfeed.html')
         self.response.write(template.render(template_vars))
