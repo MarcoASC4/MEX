@@ -148,6 +148,7 @@ class PostHandler(webapp2.RequestHandler):
             "fullname": userproperty.fullname,
             "bio": userproperty.bio,
             "urls": image_url,
+            "pfp":userproperty.key.urlsafe()
         }
 
         #count=0
