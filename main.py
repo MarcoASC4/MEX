@@ -101,7 +101,7 @@ class PostHandler(webapp2.RequestHandler):
         pic = self.request.get("fileupload")
         recipe=Recipe(name=name,description=description,ingredients=ingredients,
                 instructions=instructions, owner=userproperty.key, datetime=datetime.now(),
-                picture=images.resize(pic,50,50))
+                picture=images.resize(pic,500,500))
         key=recipe.put()
         #print key
 
@@ -112,23 +112,18 @@ class PostHandler(webapp2.RequestHandler):
         userproperty.put()
         get_back_user_recipes = Recipe.query(Recipe.owner==userproperty.key).fetch()
 
-<<<<<<< HEAD
-=======
 
->>>>>>> f005e6fed29dc63dce8670866b95b81940d9c945
         print get_back_user_recipes
 
         retrieved_recipes=[]
         image_url=[]
-<<<<<<< HEAD
-=======
+
 
         get_back_user_recipes=Recipe.query(Recipe.owner==userproperty.key).fetch()
 
         image_url=[]
         retrieved_recipes = []
 
->>>>>>> f005e6fed29dc63dce8670866b95b81940d9c945
 
         for recipe in get_back_user_recipes:
             retrieved_recipes.append(recipe)
@@ -240,11 +235,13 @@ class MyFeedHandler(webapp2.RequestHandler):
 
         all_retrieved_recipes=[]
         owners=[]
+        image_url=[]
 
 
         for recipe in get_back_all_recipes:
             all_retrieved_recipes.append(recipe)
             print ("testing2")
+            image_url.append(recipe.key.urlsafe())
             #print (recipe.owner)
             #owners.append(recipe.owner)
             owners.append(User.query(User.key==recipe.owner).fetch()[0])
@@ -264,8 +261,9 @@ class MyFeedHandler(webapp2.RequestHandler):
             "username": userproperty.username,
             "recipes": all_retrieved_recipes,
             "owner": owners,
+            "urls": image_url,
             }
-            
+
         template = jinja_current_directory.get_template('templates/myfeed.html')
         self.response.write(template.render(template_vars))
 
@@ -301,7 +299,6 @@ class MyProfileHandler(webapp2.RequestHandler):
 
 
 
-
         template_vars = {
             "user": user,
             "logout_url": logout_url,
@@ -311,6 +308,7 @@ class MyProfileHandler(webapp2.RequestHandler):
             "fullname": userproperty.fullname,
             "bio": userproperty.bio,
             "urls": image_url,
+            "pfp": userproperty.key.urlsafe()
             }
         template = jinja_current_directory.get_template('templates/myprofile.html')
         self.response.write(template.render(template_vars))
@@ -366,6 +364,8 @@ class CreateProfileHandler(webapp2.RequestHandler):
             logout_url = users.create_logout_url('/')
             print nickname
 
+        img=self.request.get('pfpupload')
+        img=images.resize(img,100,100)
 
         #fullname = self.request.get("full_name")
         #bio = self.request.get("bio")
@@ -373,6 +373,7 @@ class CreateProfileHandler(webapp2.RequestHandler):
         userfull = userproperty.key.get()
         userfull.fullname = fullname
         userfull.bio = bio
+        userfull.picture=img
         userfull.put()
 
 
@@ -407,6 +408,7 @@ class CreateProfileHandler(webapp2.RequestHandler):
             "fullname": fullname,
             "bio": bio,
             "urls": image_url,
+            "pfp": userfull.key.urlsafe()
         }
 
         template = jinja_current_directory.get_template('templates/myprofile.html')
@@ -422,7 +424,7 @@ class ExploreHandler(webapp2.RequestHandler):
         if(user):
             userquery=User.query(User.username==user.nickname()).fetch()
             if(len(userquery)==0):
-                usertest=User(username=user.nickname(), recipes=[])
+                usertest=User(username=user.nickname(), recipes=[], picture=None)
                 key=usertest.put()
             userproperty=User.query(User.username==user.nickname()).fetch()[0]
 
@@ -471,6 +473,7 @@ class User(ndb.Model):
     fullname=ndb.StringProperty()
     bio=ndb.TextProperty()
     recipes=ndb.KeyProperty(kind="Recipe", repeated=True)
+    picture=ndb.BlobProperty()
 
 class Recipe(ndb.Model):
     name=ndb.StringProperty()

@@ -21,7 +21,7 @@
     </div>
     <body>
     <div class="add_recipe">
-    <form method = "post">
+    <form method = "post" action='/createprofile' enctype="multipart/form-data">
         <h1> Create your profile: </h1>
         <p>Full Name:
           <textarea name="full_name" rows="1" cols="25"/>
@@ -32,7 +32,7 @@
           </textarea>
         <p>Upload a profile picture:
           <br>
-          <input type="file" name="profile_picture" value="fileupload" id="fileupload">
+          <input type="file" name="pfpupload" value="pfpupload" id="pfpupload">
           <br>
           <br>
           <!-- <label for="fileupload"> Select a file to upload</label> -->
