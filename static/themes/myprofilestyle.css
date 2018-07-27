@@ -73,6 +73,7 @@ html {
 .name {
   width: 200px;
   height: 175px;
+  text-indent: 25px;
 
 }
 
@@ -80,6 +81,7 @@ html {
   width: 700px;
   height: 175px;
   overflow: hidden;
+  text-indent: 25px;
 }
 
 .recipes *
@@ -96,6 +98,7 @@ html {
   background-color: rgba(255,224,102,.89999);
   margin: 10px 300px 10px 300px;
   border: 1px black solid;
+  text-indent: 25px;
 }
 
 .subposts {
@@ -103,6 +106,7 @@ html {
   border: 2px black solid;
   border-left: 0px;
   border-right: 0px;
+  text-indent: 25px;
 }
 
 #removebot {
