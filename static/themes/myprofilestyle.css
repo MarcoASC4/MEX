@@ -43,10 +43,12 @@ html {
 .profileHeader {
   background-color: rgba(255,224,102,.89999);
   margin: 0px 150px 0px 150px;
-  border: purple solid;
   height: 200px;
   display: flex;
   flex-direction: column;
+  border: 1px black solid;
+  border-radius: 22px;
+
 }
 
 #profile_picture {
@@ -59,6 +61,7 @@ html {
   align-items: center;
   width: 0 auto;
   height: 200px;
+
 }
 
 .picetbio * {
@@ -97,6 +100,8 @@ html {
   background-color: rgba(255,224,102,.89999);
   margin: 10px 300px 10px 300px;
   border: 1px black solid;
+  border-radius: 22px;
+
 }
 
 .subposts {

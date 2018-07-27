@@ -112,28 +112,16 @@ class PostHandler(webapp2.RequestHandler):
         userproperty.put()
         get_back_user_recipes = Recipe.query(Recipe.owner==userproperty.key).fetch()
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4fc0ba09e9b2f17e97b38838fa7234d2caf5b67e
         print get_back_user_recipes
 
         retrieved_recipes=[]
         image_url=[]
-<<<<<<< HEAD
-=======
-
->>>>>>> 4fc0ba09e9b2f17e97b38838fa7234d2caf5b67e
 
         get_back_user_recipes=Recipe.query(Recipe.owner==userproperty.key).fetch()
 
         image_url=[]
         retrieved_recipes = []
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4fc0ba09e9b2f17e97b38838fa7234d2caf5b67e
         for recipe in get_back_user_recipes:
             retrieved_recipes.append(recipe)
             image_url.append(recipe.key.urlsafe())
