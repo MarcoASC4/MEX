@@ -6,6 +6,7 @@
   align-items: center;
   font-family: 'Shadows Into Light', cursive;
   font-size: 20px;
+  border: 2px rgba(2,2,2,.5) solid;
 }
 
 html, body {
@@ -42,6 +43,10 @@ html {
   height: 200px;
   display: flex;
   flex-direction: column;
+}
+
+#profile_picture {
+
 }
 
 .picetbio {
